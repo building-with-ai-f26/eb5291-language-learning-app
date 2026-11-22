@@ -259,8 +259,8 @@ button:focus-visible {
   color: var(--error);
 }
 
-.app:has(> .learning-home:not([hidden])) {
-  max-width: 72rem;
+.app:has(> :is(.learning-home, .course-site):not([hidden])) {
+  max-width: 82rem;
   padding-block: 1.25rem 4rem;
 }
 
@@ -284,26 +284,6 @@ button:focus-visible {
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
-.course-card {
-  align-items: center;
-  padding: clamp(1rem, 4vw, 2rem);
-}
-
-.course-card h2 {
-  margin: 0 0 0.45rem;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-}
-
-@media (max-width: 34rem) {
-  .course-card {
-    grid-template-columns: auto minmax(0, 1fr);
-  }
-
-  .course-card .onboarding-action {
-    grid-column: 1 / -1;
-  }
-}
-
 .vocabulary h2 {
   margin: 0 0 0.75rem;
   font-size: 1.125rem;
@@ -325,10 +305,6 @@ button:focus-visible {
   letter-spacing: -0.025em;
   text-align: center;
   overflow-wrap: anywhere;
-}
-
-.app:has(#vocabulary:not([hidden])) {
-  max-width: 64rem;
 }
 
 #vocabulary {
@@ -453,15 +429,22 @@ button:focus-visible {
 }
 
 #review-result {
+  max-width: 34rem;
   padding: clamp(1.25rem, 4vw, 2rem);
   border: 1px solid var(--divider);
-  border-radius: 1.25rem;
+  border-radius: 0.75rem;
   background: var(--surface);
-  box-shadow: var(--panel-shadow);
 }
 
 #review-score {
   margin-top: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+}
+
+.review-actions {
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .word-lesson-actions {
@@ -742,7 +725,7 @@ button:focus-visible {
 
 .vocabulary-button:is(
   .welcome-action, .onboarding-action,
-  #next-card, #start-review, #retry-review,
+  #next-card, #start-review, #start-level-two, #start-level-two[hidden] + #retry-review,
   #check-sentence, #next-sentence, #next-sentence-round, #replay-sentence-round,
   #next-tutorial, #check-tutorial, #replay-tutorial,
   #open-best-friend, #next-best-friend, #replay-best-friend,
@@ -757,7 +740,7 @@ button:focus-visible {
 
 .vocabulary-button:is(
   .welcome-action, .onboarding-action,
-  #next-card, #start-review, #retry-review,
+  #next-card, #start-review, #start-level-two, #start-level-two[hidden] + #retry-review,
   #check-sentence, #next-sentence, #next-sentence-round, #replay-sentence-round,
   #next-tutorial, #check-tutorial, #replay-tutorial,
   #open-best-friend, #next-best-friend, #replay-best-friend,
@@ -767,14 +750,12 @@ button:focus-visible {
 }
 
 .app-brand > span,
-.course-card .level-number,
 .word-lesson-icon {
   color: var(--accent);
   font-size: 0;
 }
 
 .app-brand > span::before,
-.course-card .level-number::before,
 .word-lesson-icon::before {
   content: "🌐︎";
   font-family: "Apple Symbols", "Segoe UI Symbol", sans-serif;
@@ -801,12 +782,7 @@ button:focus-visible {
   text-underline-offset: 0.25em;
 }
 
-.app:has(> .course-header:not([hidden])) {
-  max-width: 68rem;
-  padding-top: clamp(1rem, 4vw, 2rem);
-}
-
-.course-header:not([hidden]) {
+.course-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -908,4 +884,268 @@ button:focus-visible {
 .course-resource {
   padding-block: 0.8rem;
   font-weight: 600;
+}
+
+.learning-columns,
+.course-columns {
+  --sidebar-width: clamp(11rem, 20vw, 16rem);
+  display: grid;
+  align-items: stretch;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: 2rem;
+  min-block-size: calc(100svh - 10rem);
+}
+
+.learning-columns {
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) minmax(10rem, 1.2fr);
+}
+
+.course-columns {
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+}
+
+.site-sidebar {
+  display: grid;
+  align-content: start;
+  gap: 0.25rem;
+  padding: 0.85rem 0.65rem;
+  border: 1px solid var(--divider);
+  border-radius: 0.75rem;
+  background: var(--page);
+}
+
+.site-sidebar h2,
+.learning-progress h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.site-sidebar h2 {
+  padding-inline: 0.7rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.site-sidebar :is(button, a) {
+  display: block;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.7rem;
+  border: 0;
+  border-radius: 0.45rem;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.site-sidebar a[href="#try-languages"] {
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--divider);
+}
+
+.site-sidebar :is(button:enabled, a):hover {
+  background: var(--mint);
+  cursor: pointer;
+}
+
+.course-columns:has(.path:not([hidden])) #sidebar-learning-path,
+.course-columns:has(#vocabulary:not([hidden])) [data-course-target="open-vocabulary"],
+.course-columns:has(#sentence-lesson:not([hidden])) [data-course-target="level-two"],
+.course-columns:has(#topic-practice:not([hidden])) [data-course-target="open-topics"],
+.course-columns:has(:is(#grammar-guide, #best-friend-lesson, #grammar-tutorial):not([hidden])) [data-course-target="open-grammar"] {
+  background: var(--mint);
+  color: var(--accent-deep);
+}
+
+.site-sidebar a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.site-sidebar button:disabled,
+.site-sidebar small {
+  color: var(--muted);
+}
+
+.site-sidebar small:not([hidden]) {
+  display: block;
+}
+
+.learning-feed h1,
+.course-feed .course-title {
+  margin-top: 0;
+}
+
+.saved-courses,
+.learning-progress {
+  border: 1px solid var(--divider);
+  border-radius: 0.75rem;
+  background: var(--surface);
+}
+
+.saved-courses {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-courses li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.saved-courses li + li,
+.learning-progress dl > div + div {
+  border-top: 1px solid var(--divider);
+}
+
+.saved-courses h2,
+#try-languages h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.saved-courses p,
+#try-languages p,
+.learning-progress dd {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+
+.saved-courses h2 span {
+  margin-inline-start: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+#try-languages {
+  margin-top: 1.75rem;
+}
+
+.learning-progress {
+  padding: 1rem;
+}
+
+.learning-progress dl {
+  margin: 0;
+}
+
+.learning-progress dl > div {
+  padding-block: 0.65rem;
+}
+
+.learning-progress dt {
+  font-weight: 600;
+}
+
+.learning-progress dd {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 54.01rem) {
+  .app:has(> :is(.learning-home, .course-site):not([hidden])) {
+    max-width: none;
+    padding: 0;
+  }
+
+  :is(.learning-header, .course-header) {
+    padding: 0.85rem clamp(1rem, 3vw, 2rem);
+  }
+
+  :is(.learning-columns, .course-columns) {
+    margin-top: 0;
+    min-block-size: calc(100svh - 4.75rem);
+  }
+
+  .learning-columns {
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr) clamp(12rem, 19vw, 17rem);
+  }
+
+  :is(.site-sidebar, .learning-progress) {
+    padding: 1.5rem 1rem;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .site-sidebar {
+    border-inline-end: 1px solid var(--divider);
+  }
+
+  .learning-progress {
+    border-inline-start: 1px solid var(--divider);
+  }
+
+  :is(.learning-feed, .course-feed) {
+    width: 100%;
+    max-width: 60rem;
+    justify-self: start;
+    padding-block: 2rem;
+  }
+
+  .course-feed {
+    padding-inline-end: clamp(1rem, 3vw, 2rem);
+  }
+}
+
+@media (max-width: 54rem) {
+  .learning-columns {
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  }
+
+  .learning-progress {
+    grid-column: 2;
+  }
+
+  .learning-columns {
+    min-block-size: auto;
+  }
+
+  .learning-columns .site-sidebar {
+    grid-row: span 2;
+  }
+}
+
+@media (max-width: 39rem) {
+  .learning-columns,
+  .course-columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    min-block-size: auto;
+  }
+
+  .site-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.6rem;
+  }
+
+  .learning-columns .site-sidebar {
+    grid-row: auto;
+  }
+
+  .site-sidebar a[href="#try-languages"] {
+    margin-top: 0;
+    border-top: 0;
+  }
+
+  .site-sidebar h2 {
+    flex-basis: 100%;
+    margin: 0;
+  }
+
+  .learning-progress {
+    grid-column: auto;
+  }
 }

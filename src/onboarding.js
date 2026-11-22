@@ -9,13 +9,11 @@ const continueButton = document.querySelector('#continue-local-profile');
 const leaveButtons = document.querySelectorAll('[data-leave-profile]');
 const pathUsername = document.querySelector('#path-username');
 const usernameScreen = document.querySelector('#username-screen');
-const languageScreen = document.querySelector('#language-screen');
 const usernameForm = document.querySelector('#username-form');
 const usernameInput = document.querySelector('#username');
 const usernameError = document.querySelector('#username-error');
-const languageTitle = document.querySelector('#language-title');
-const spanishButton = document.querySelector('#choose-spanish');
-const intro = document.querySelector('.intro');
+const course = document.querySelector('#spanish-course');
+const courseViews = document.querySelectorAll('.course-feed > section');
 const path = document.querySelector('.path');
 const pathTitle = document.querySelector('#path-title');
 const learningHome = document.querySelector('#learning-home');
@@ -37,11 +35,9 @@ function readProfile() {
 }
 
 let username = '';
-let language = '';
 
 function loadProfile(profile) {
   username = typeof profile?.username === 'string' ? profile.username.trim() : '';
-  language = username && profile?.language === 'es' ? 'es' : '';
 }
 
 loadProfile(readProfile());
@@ -63,21 +59,17 @@ function setActive(value) {
 
 function saveProfile() {
   try {
-    localStorage.setItem(profileKey, JSON.stringify({ username, language }));
+    localStorage.setItem(profileKey, JSON.stringify({ username, language: 'es' }));
   } catch {
     // Setup still works for this visit when browser storage is unavailable.
   }
 }
 
 function showScreen(moveFocus = false, choosingUsername = false) {
-  const ready = active && Boolean(language);
-  const choosingLanguage = active && !ready;
   welcomeScreen.hidden = choosingUsername || active;
   usernameScreen.hidden = !choosingUsername;
-  languageScreen.hidden = !choosingLanguage;
-  intro.hidden = true;
-  path.hidden = true;
-  learningHome.hidden = !ready;
+  course.hidden = true;
+  learningHome.hidden = !active;
   createButton.hidden = Boolean(username);
   continueButton.hidden = !username;
   continueButton.textContent = username ? `Continue as ${username}` : '';
@@ -88,8 +80,7 @@ function showScreen(moveFocus = false, choosingUsername = false) {
     : 'Level 1 available · Level 2 locked';
 
   if (moveFocus) {
-    const nextFocus = choosingUsername ? usernameInput : ready ? learningTitle
-      : choosingLanguage ? languageTitle : welcomeTitle;
+    const nextFocus = choosingUsername ? usernameInput : active ? learningTitle : welcomeTitle;
     nextFocus.focus();
   }
 }
@@ -111,12 +102,29 @@ for (const button of leaveButtons) {
   });
 }
 
-document.querySelector('#continue-course').addEventListener('click', () => {
-  learningHome.hidden = true;
-  intro.hidden = false;
+function showLearningPath() {
+  for (const view of courseViews) view.hidden = true;
   path.hidden = false;
   pathTitle.focus();
-});
+}
+
+for (const button of document.querySelectorAll('[data-open-spanish]')) {
+  button.addEventListener('click', () => {
+    learningHome.hidden = true;
+    course.hidden = false;
+    showLearningPath();
+  });
+}
+
+document.querySelector('#sidebar-learning-path').addEventListener('click', showLearningPath);
+for (const button of document.querySelectorAll('[data-course-target]')) {
+  button.addEventListener('click', () => {
+    const target = document.getElementById(button.dataset.courseTarget);
+    if (target.disabled) return;
+    for (const view of courseViews) view.hidden = true;
+    target.click();
+  });
+}
 
 document.querySelector('#back-to-learning').addEventListener('click', () => showScreen(true));
 
@@ -147,12 +155,6 @@ usernameForm.addEventListener('submit', (event) => {
 usernameInput.addEventListener('input', () => {
   usernameInput.removeAttribute('aria-invalid');
   usernameError.textContent = '';
-});
-
-spanishButton.addEventListener('click', () => {
-  language = 'es';
-  saveProfile();
-  showScreen(true);
 });
 
 showScreen();

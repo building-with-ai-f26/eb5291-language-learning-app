@@ -4,7 +4,6 @@ import { shuffle } from './shuffle.js';
 import { vocabulary } from './vocabulary-content.js';
 import { openWords, unlockedLevel } from './vocabulary.js';
 
-const intro = document.querySelector('.intro');
 const path = document.querySelector('.path');
 const openButton = document.querySelector('#open-topics');
 const view = document.querySelector('#topic-practice');
@@ -73,7 +72,6 @@ for (const [id, label] of Object.entries(topicLabels)) {
 }
 
 openButton.addEventListener('click', () => {
-  intro.hidden = true;
   path.hidden = true;
   view.hidden = false;
   if (topicId) {
@@ -85,7 +83,6 @@ openButton.addEventListener('click', () => {
 
 document.querySelector('#back-from-topics').addEventListener('click', () => {
   view.hidden = true;
-  intro.hidden = false;
   path.hidden = false;
   openButton.focus();
 });

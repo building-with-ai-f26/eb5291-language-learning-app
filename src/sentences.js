@@ -2,7 +2,6 @@ import { sentenceRounds } from './sentence-content.js';
 import { grammarRules } from './grammar-content.js';
 import { createTileBuilder, matchesAnswer } from './tiles.js';
 
-const intro = document.querySelector('.intro');
 const path = document.querySelector('.path');
 const openButton = document.querySelector('#level-two');
 const lesson = document.querySelector('#sentence-lesson');
@@ -59,7 +58,6 @@ export function openSentences(entries = null, onBack = null) {
   returnToTopic = onBack;
   tutorialButton.hidden = Boolean(onBack);
   backButton.textContent = onBack ? 'Back to topic' : 'Back to learning path';
-  intro.hidden = true;
   path.hidden = true;
   lesson.hidden = false;
   showExercise(0);
@@ -102,7 +100,6 @@ backButton.addEventListener('click', () => {
     returnToTopic();
     return;
   }
-  intro.hidden = false;
   path.hidden = false;
   openButton.focus();
 });

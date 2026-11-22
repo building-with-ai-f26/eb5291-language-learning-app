@@ -1,7 +1,7 @@
 import { everydayWords } from './vocabulary-content.js';
+import { openSentences } from './sentences.js';
 import { shuffle } from './shuffle.js';
 
-const intro = document.querySelector('.intro');
 const path = document.querySelector('.path');
 const openButton = document.querySelector('#open-vocabulary');
 const card = document.querySelector('#vocabulary');
@@ -22,6 +22,8 @@ const reviewResult = document.querySelector('#review-result');
 const reviewScore = document.querySelector('#review-score');
 const reviewOutcome = document.querySelector('#review-outcome');
 const retryReviewButton = document.querySelector('#retry-review');
+const startLevelTwoButton = document.querySelector('#start-level-two');
+const practiceReviewWordsButton = document.querySelector('#practice-review-words');
 const backButton = document.querySelector('#back-to-path');
 const levelTwo = document.querySelector('#level-two');
 const levelTwoDescription = document.querySelector('#level-two-description');
@@ -29,6 +31,8 @@ const levelTwoStatus = document.querySelector('#level-two-status');
 const levelOneStatus = document.querySelector('#level-one-status');
 const levelOneAction = document.querySelector('#level-one-action');
 const levelTwoAction = document.querySelector('#level-two-action');
+const sidebarLevelTwo = document.querySelector('#sidebar-level-two');
+const sidebarLevelTwoStatus = document.querySelector('#sidebar-level-two-status');
 
 const reviewLength = 5;
 const passingScore = 4;
@@ -55,6 +59,8 @@ function showLevelTwoUnlocked() {
   levelOneAction.textContent = 'Practice';
   levelOneAction.removeAttribute('data-next');
   levelTwoAction.hidden = false;
+  sidebarLevelTwo.disabled = false;
+  sidebarLevelTwoStatus.hidden = true;
 }
 
 try {
@@ -126,19 +132,23 @@ function finishReview() {
   question.hidden = true;
   reviewResult.hidden = false;
   reviewScore.textContent = `Score: ${score}/${reviewLength}`;
-  reviewOutcome.textContent = passed
-    ? 'Level 2 unlocked.'
-    : `Get at least ${passingScore}/${reviewLength} to unlock Level 2.`;
-  retryReviewButton.hidden = passed;
-
+  let unlockedForVisit = false;
   if (passed) {
     showLevelTwoUnlocked();
     try {
       localStorage.setItem(unlockKey, 'true');
     } catch {
-      reviewOutcome.textContent = 'Level 2 unlocked for this visit. Browser storage is unavailable.';
+      unlockedForVisit = true;
     }
   }
+
+  const canStartLevelTwo = unlockedLevel() === 2;
+  reviewOutcome.textContent = canStartLevelTwo
+    ? unlockedForVisit ? 'Level 2 unlocked for this visit.' : 'Level 2 is unlocked.'
+    : `Get at least ${passingScore}/${reviewLength} to unlock Level 2.`;
+  startLevelTwoButton.hidden = !canStartLevelTwo;
+  retryReviewButton.hidden = passed;
+  practiceReviewWordsButton.hidden = canStartLevelTwo;
   reviewScore.focus();
 }
 
@@ -147,7 +157,6 @@ export function openWords(entries, alternatives = everydayWords, onBack = null) 
   choicePool = alternatives;
   returnToTopic = onBack;
   backButton.textContent = onBack ? 'Back to topic' : 'Back to learning path';
-  intro.hidden = true;
   path.hidden = true;
   card.hidden = false;
   reviewWords = null;
@@ -189,6 +198,12 @@ answerButtons.forEach((button) => {
 
 startReviewButton.addEventListener('click', startReview);
 retryReviewButton.addEventListener('click', startReview);
+practiceReviewWordsButton.addEventListener('click', () => openWords(everydayWords));
+startLevelTwoButton.addEventListener('click', () => {
+  if (unlockedLevel() !== 2) return;
+  card.hidden = true;
+  openSentences();
+});
 nextButton.addEventListener('click', () => {
   if (reviewWords && cardIndex === reviewWords.length - 1) {
     finishReview();
@@ -208,7 +223,6 @@ backButton.addEventListener('click', () => {
     returnToTopic();
     return;
   }
-  intro.hidden = false;
   path.hidden = false;
   openButton.focus();
 });

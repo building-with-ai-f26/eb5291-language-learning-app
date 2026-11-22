@@ -3,7 +3,6 @@ import { describingThings, grammarExercises, grammarRoles, grammarRules } from '
 import { createTileBuilder, matchesAnswer } from './tiles.js';
 import { unlockedLevel } from './vocabulary.js';
 
-const intro = document.querySelector('.intro');
 const path = document.querySelector('.path');
 const sentenceLesson = document.querySelector('#sentence-lesson');
 const openGuide = document.querySelector('#open-grammar');
@@ -102,7 +101,6 @@ function closeTutorial() {
 }
 
 openGuide.addEventListener('click', () => {
-  intro.hidden = true;
   path.hidden = true;
   const locked = unlockedLevel() < describingThings.level;
   replay.hidden = locked;
@@ -115,7 +113,6 @@ openGuide.addEventListener('click', () => {
 
 document.querySelector('#back-from-grammar').addEventListener('click', () => {
   guide.hidden = true;
-  intro.hidden = false;
   path.hidden = false;
   openGuide.focus();
 });
