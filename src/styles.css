@@ -195,6 +195,72 @@ button:focus-visible {
   display: none;
 }
 
+.app:has(> .welcome:not([hidden])) {
+  max-width: 76rem;
+  padding-block: clamp(2.5rem, 12vh, 8rem);
+}
+
+.welcome:not([hidden]) {
+  display: grid;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.welcome .welcome-action {
+  border-color: var(--action-border);
+  background: var(--action-yellow);
+  overflow-wrap: anywhere;
+}
+
+.welcome-storage {
+  margin: 0.75rem 0 0;
+  color: #51483d;
+  font-size: 0.9rem;
+}
+
+.welcome-example {
+  display: grid;
+  align-content: center;
+  min-height: 14rem;
+  padding: clamp(1.25rem, 5vw, 3rem);
+  border: 1px solid var(--butter-border);
+  border-radius: 1.5rem;
+  background: linear-gradient(145deg, #fffdf3, var(--butter));
+  box-shadow: var(--panel-shadow);
+}
+
+.welcome-example p {
+  margin: 0;
+}
+
+.welcome-example p[lang="es"] {
+  margin-bottom: 0.6rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 750;
+  letter-spacing: -0.05em;
+}
+
+.path-profile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+#path-username {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-weight: 650;
+}
+
+@media (min-width: 48rem) {
+  .welcome:not([hidden]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .onboarding {
   max-width: 34rem;
   margin-inline: auto;

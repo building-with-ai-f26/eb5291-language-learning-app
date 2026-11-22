@@ -12,7 +12,23 @@
   </head>
   <body>
     <main class="app">
-      <section class="level vocabulary onboarding" id="username-screen" aria-labelledby="username-title">
+      <section class="welcome" id="welcome-screen" aria-labelledby="welcome-title">
+        <div class="welcome-entry">
+          <h1 id="welcome-title" tabindex="-1">Language Learning App</h1>
+          <p class="description">Learn Spanish words and see how they fit together.</p>
+          <div class="vocabulary-actions">
+            <button class="vocabulary-button welcome-action" id="create-local-profile" type="button">Create local profile</button>
+            <button class="vocabulary-button welcome-action" id="continue-local-profile" type="button" hidden></button>
+          </div>
+          <p class="welcome-storage">Local profile · Saved in this browser</p>
+        </div>
+        <div class="welcome-example">
+          <p lang="es">una casa rosa</p>
+          <p>a pink house</p>
+        </div>
+      </section>
+
+      <section class="level vocabulary onboarding" id="username-screen" aria-labelledby="username-title" hidden>
         <h1 id="username-title"><label for="username">Choose a username</label></h1>
         <form id="username-form">
           <input id="username" name="username" type="text" autocomplete="username" required aria-describedby="username-error">
@@ -38,6 +54,10 @@
       </header>
 
       <section class="path" aria-labelledby="path-title" hidden>
+        <div class="path-profile">
+          <span id="path-username"></span>
+          <button class="vocabulary-button" id="leave-profile" type="button">Leave profile</button>
+        </div>
         <h2 id="path-title" tabindex="-1">Your learning path</h2>
         <ol class="levels">
           <li>
