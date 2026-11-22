@@ -13,6 +13,8 @@ export function createHearIt(cardId, text) {
   function label(action) {
     button.textContent = action;
     button.setAttribute('aria-label', `${action}: ${text}`);
+    if (action === 'Hear it') button.dataset.analyticsEvent = 'hear_it_clicked';
+    else delete button.dataset.analyticsEvent;
   }
 
   label('Hear it');

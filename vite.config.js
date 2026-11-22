@@ -72,6 +72,8 @@ function lessonAudio(apiKey) {
   };
 }
 
-export default defineConfig(({ mode }) => ({
-  plugins: [lessonAudio(loadEnv(mode, process.cwd(), 'OPENROUTER_API_KEY').OPENROUTER_API_KEY?.trim())],
+export default defineConfig(({ command, mode }) => ({
+  plugins: command === 'serve'
+    ? [lessonAudio(loadEnv(mode, process.cwd(), 'OPENROUTER_API_KEY').OPENROUTER_API_KEY?.trim())]
+    : [],
 }));

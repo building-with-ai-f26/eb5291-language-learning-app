@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build:learner": "vite build --base=./ --mode pages",
     "build": "vite build"
   },
   "devDependencies": {
     "vite": "^8.0.0"
+  },
+  "dependencies": {
+    "posthog-js": "^1.453.2"
   }
 }

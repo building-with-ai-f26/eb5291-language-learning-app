@@ -1,0 +1,44 @@
+.analytics-panel {
+  padding: 1rem clamp(1rem, 4vw, 2rem);
+  border-top: 1px solid var(--divider, #e0e6e4);
+  color: var(--muted, #625d5b);
+  font-size: 0.875rem;
+}
+
+.analytics-panel details {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.analytics-panel summary {
+  width: fit-content;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.analytics-panel p {
+  margin: 0.6rem 0;
+}
+
+.analytics-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block: 0.5rem;
+}
+
+.analytics-actions button {
+  min-height: 2.5rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--divider, #e0e6e4);
+  border-radius: 0.5rem;
+  background: white;
+  color: #222;
+  font: inherit;
+  cursor: pointer;
+}
+
+.analytics-actions button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
