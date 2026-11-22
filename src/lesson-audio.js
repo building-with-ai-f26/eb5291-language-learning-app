@@ -1,3 +1,6 @@
+const audioOrigin = import.meta.env.VITE_LESSON_AUDIO_ORIGIN?.trim();
+export const hasLessonAudio = import.meta.env.DEV || Boolean(audioOrigin);
+
 export function createHearIt(cardId, text) {
   const control = document.createElement('div');
   const button = document.createElement('button');
@@ -18,7 +21,12 @@ export function createHearIt(cardId, text) {
     button.setAttribute('aria-disabled', 'true');
     status.textContent = 'Loading audio…';
     try {
-      audio ??= new Audio(`/api/lesson-audio/${encodeURIComponent(cardId)}`);
+      if (!audio) {
+        const path = `/api/lesson-audio/${encodeURIComponent(cardId)}`;
+        audio = new Audio();
+        if (audioOrigin) audio.crossOrigin = 'anonymous';
+        audio.src = audioOrigin ? new URL(path, audioOrigin).href : path;
+      }
       audio.currentTime = 0;
       await audio.play();
       label('Hear it');

@@ -1,7 +1,7 @@
 import { everydayWords, vocabulary } from './vocabulary-content.js';
 import { openSentences } from './sentences.js';
 import { shuffle } from './shuffle.js';
-import { createHearIt } from './lesson-audio.js';
+import { createHearIt, hasLessonAudio } from './lesson-audio.js';
 
 const path = document.querySelector('.path');
 const openButton = document.querySelector('#open-vocabulary');
@@ -109,7 +109,7 @@ function showCard(index) {
   progressBar.max = words.length;
   progressBar.value = reviewing ? index : index + Number(practice.answered);
   word.textContent = entry.spanish;
-  if (import.meta.env.DEV) {
+  if (hasLessonAudio) {
     hearIt?.remove();
     hearIt = undefined;
     if (!reviewing) {
