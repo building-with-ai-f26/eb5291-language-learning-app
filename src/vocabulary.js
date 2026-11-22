@@ -26,6 +26,9 @@ const backButton = document.querySelector('#back-to-path');
 const levelTwo = document.querySelector('#level-two');
 const levelTwoDescription = document.querySelector('#level-two-description');
 const levelTwoStatus = document.querySelector('#level-two-status');
+const levelOneStatus = document.querySelector('#level-one-status');
+const levelOneAction = document.querySelector('#level-one-action');
+const levelTwoAction = document.querySelector('#level-two-action');
 
 const reviewLength = 5;
 const passingScore = 4;
@@ -48,6 +51,10 @@ function showLevelTwoUnlocked() {
   levelTwo.disabled = false;
   levelTwoDescription.textContent = 'Put Spanish word tiles in order to build a sentence.';
   levelTwoStatus.textContent = 'Unlocked';
+  levelOneStatus.textContent = 'Review passed';
+  levelOneAction.textContent = 'Practice';
+  levelOneAction.removeAttribute('data-next');
+  levelTwoAction.hidden = false;
 }
 
 try {

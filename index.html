@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#fbf7ed">
-    <title>Spanish Study | Learning path</title>
+    <meta name="theme-color" content="#FFFCFA">
+    <title>Word of Mouth | Learning path</title>
     <link rel="stylesheet" href="./src/styles.css">
     <script type="module" src="./src/onboarding.js"></script>
     <script type="module" src="./src/topics.js"></script>
@@ -14,7 +14,8 @@
     <main class="app">
       <section class="welcome" id="welcome-screen" aria-labelledby="welcome-title">
         <div class="welcome-entry">
-          <h1 id="welcome-title" tabindex="-1">Language Learning App</h1>
+          <p class="app-brand"><span aria-hidden="true">🌐</span></p>
+          <h1 id="welcome-title" tabindex="-1">Word of Mouth</h1>
           <p class="description">Learn Spanish words and see how they fit together.</p>
           <div class="vocabulary-actions">
             <button class="vocabulary-button welcome-action" id="create-local-profile" type="button">Create local profile</button>
@@ -22,73 +23,113 @@
           </div>
           <p class="welcome-storage">Local profile · Saved in this browser</p>
         </div>
+        <div data-worked-example></div>
+      </section>
+
+      <section class="welcome" id="username-screen" aria-labelledby="username-title" hidden>
+        <div class="welcome-entry">
+          <p class="app-brand"><span aria-hidden="true">🌐</span> Word of Mouth</p>
+          <h1 id="username-title"><label for="username">Choose a username</label></h1>
+          <form id="username-form">
+            <input id="username" name="username" type="text" autocomplete="username" required aria-describedby="username-error">
+            <p id="username-error" role="status"></p>
+            <button class="vocabulary-button onboarding-action" type="submit">Continue</button>
+          </form>
+        </div>
+        <div data-worked-example></div>
+      </section>
+
+      <template id="worked-example">
         <div class="welcome-example">
           <p lang="es">una casa rosa</p>
           <p>a pink house</p>
+          <dl class="grammar-chunks">
+            <div class="grammar-chunk" data-role="article"><dt lang="es">una</dt><dd>Article · a</dd></div>
+            <div class="grammar-chunk" data-role="noun"><dt lang="es">casa</dt><dd>Noun · house</dd></div>
+            <div class="grammar-chunk" data-role="adjective"><dt lang="es">rosa</dt><dd>Adjective · pink</dd></div>
+          </dl>
+          <p>The article comes first, and the color follows the noun.</p>
         </div>
-      </section>
+      </template>
 
-      <section class="level vocabulary onboarding" id="username-screen" aria-labelledby="username-title" hidden>
-        <h1 id="username-title"><label for="username">Choose a username</label></h1>
-        <form id="username-form">
-          <input id="username" name="username" type="text" autocomplete="username" required aria-describedby="username-error">
-          <p id="username-error" role="status"></p>
-          <button class="vocabulary-button onboarding-action" type="submit">Continue</button>
-        </form>
-      </section>
-
-      <section class="level vocabulary onboarding" id="language-screen" aria-labelledby="language-title" hidden>
+      <section class="learning-home" id="language-screen" aria-labelledby="language-title" hidden>
+        <div class="learning-header">
+          <p class="app-brand"><span aria-hidden="true">🌐</span> Word of Mouth</p>
+          <button class="vocabulary-button" type="button" data-leave-profile>Leave profile</button>
+        </div>
         <h1 id="language-title" tabindex="-1">What do you want to learn?</h1>
-        <button class="level level-button onboarding-language" id="choose-spanish" type="button">
+        <button class="level level-button course-card" id="choose-spanish" type="button">
           <span class="level-number" aria-hidden="true">🌐</span>
-          <span class="level-title">Spanish <span lang="es">Español</span></span>
+          <span class="level-title">Spanish · <span lang="es">Español</span></span>
         </button>
       </section>
 
-      <header class="intro" hidden>
-        <p class="language">Spanish <span lang="es">Español</span></p>
-        <h1>From words<br>to sentences.</h1>
-        <p class="description">
-          Learn a few everyday words, then see how they fit together.
-        </p>
+      <section class="learning-home" id="learning-home" aria-labelledby="learning-title" hidden>
+        <div class="learning-header">
+          <p class="app-brand"><span aria-hidden="true">🌐</span> Word of Mouth</p>
+          <div class="path-profile">
+            <span id="learning-username"></span>
+            <button class="vocabulary-button" type="button" data-leave-profile>Leave profile</button>
+          </div>
+        </div>
+        <h1 id="learning-title" tabindex="-1">My learning</h1>
+        <article class="level course-card">
+          <span class="level-number" aria-hidden="true">🌐</span>
+          <div>
+            <h2>Spanish · <span lang="es">Español</span></h2>
+            <p id="course-progress"></p>
+          </div>
+          <button class="vocabulary-button onboarding-action" id="continue-course" type="button">Continue</button>
+        </article>
+      </section>
+
+      <header class="intro course-header" hidden>
+        <button class="vocabulary-button" id="back-to-learning" type="button">← My learning</button>
+        <div class="path-profile">
+          <span id="path-username"></span>
+          <button class="vocabulary-button" id="leave-profile" type="button" data-leave-profile>Leave profile</button>
+        </div>
       </header>
 
       <section class="path" aria-labelledby="path-title" hidden>
-        <div class="path-profile">
-          <span id="path-username"></span>
-          <button class="vocabulary-button" id="leave-profile" type="button">Leave profile</button>
-        </div>
-        <h2 id="path-title" tabindex="-1">Your learning path</h2>
-        <ol class="levels">
+        <h1 class="course-title" id="path-title" tabindex="-1">Spanish</h1>
+        <h2>Your learning path</h2>
+        <ol class="levels course-rows">
           <li>
-            <button class="level level-button" id="open-vocabulary" type="button" aria-label="Level 1: Everyday words">
-              <span class="level-number" aria-hidden="true">01</span>
+            <button class="level level-button course-row" id="open-vocabulary" type="button" aria-describedby="level-one-status">
               <span>
                 <span class="level-label">Level 1</span>
                 <span class="level-title">Everyday words</span>
-                <span class="level-description">Start with words you can use right away.</span>
+                <span class="level-description">Learn everyday Spanish words and take a short review.</span>
+              </span>
+              <span class="course-row-end">
+                <span id="level-one-status">Available</span>
+                <span class="course-action" id="level-one-action" data-next>Start</span>
               </span>
             </button>
           </li>
           <li>
-            <button class="level level-button level--locked" id="level-two" type="button" disabled>
-              <span class="level-number" aria-hidden="true">02</span>
+            <button class="level level-button course-row level--locked" id="level-two" type="button" disabled>
               <span>
                 <span class="level-label">Level 2</span>
                 <span class="level-title">Build a sentence</span>
                 <span class="level-description" id="level-two-description">Pass the Level 1 review to unlock this lesson.</span>
               </span>
-              <span class="level-status" id="level-two-status">Locked</span>
+              <span class="course-row-end">
+                <span id="level-two-status">Locked</span>
+                <span class="course-action" id="level-two-action" data-next hidden>Start</span>
+              </span>
             </button>
           </li>
         </ol>
-        <button class="level level-button topic-entry" id="open-topics" type="button">
-          <span class="level-number" aria-hidden="true">🌐</span>
-          <span class="level-title">Practice by topic</span>
-        </button>
-        <button class="level level-button topic-entry" id="open-grammar" type="button">
-          <span class="level-title">Grammar guide</span>
-        </button>
+        <div class="course-rows course-resources">
+          <button class="level-button course-resource" id="open-topics" type="button">
+            <span>Practice by topic</span><span aria-hidden="true">›</span>
+          </button>
+          <button class="level-button course-resource" id="open-grammar" type="button">
+            <span>Grammar guide</span><span aria-hidden="true">›</span>
+          </button>
+        </div>
       </section>
 
       <section class="level vocabulary" id="topic-practice" aria-labelledby="topics-title" hidden>
@@ -187,8 +228,20 @@
         <button class="vocabulary-button lesson-back" id="back-from-grammar" type="button">Back to learning path</button>
         <h2 id="grammar-title" tabindex="-1">Grammar guide</h2>
         <button class="vocabulary-button" id="replay-tutorial" type="button">Start Describing things tutorial</button>
-        <p id="tutorial-locked" hidden>Unlock Level 2 to start the tutorial.</p>
+        <button class="vocabulary-button" id="open-best-friend" type="button" hidden>My best friend</button>
+        <p id="tutorial-locked" hidden>Unlock Level 2 to start the grammar lessons.</p>
         <div id="grammar-rules"></div>
+      </section>
+      <section class="level vocabulary" id="best-friend-lesson" aria-labelledby="best-friend-title" hidden>
+        <button class="vocabulary-button lesson-back" id="back-from-best-friend" type="button">Back to grammar</button>
+        <h2 id="best-friend-title">My best friend</h2>
+        <h3 id="best-friend-prompt" tabindex="-1"></h3>
+        <div class="grammar-comparisons" id="best-friend-examples"></div>
+        <p id="best-friend-feedback" role="status"></p>
+        <div class="vocabulary-actions">
+          <button class="vocabulary-button" id="replay-best-friend" type="button" hidden>Replay</button>
+          <button class="vocabulary-button" id="next-best-friend" type="button">Continue</button>
+        </div>
       </section>
       <section class="level vocabulary" id="grammar-tutorial" aria-labelledby="tutorial-title" hidden>
         <button class="vocabulary-button lesson-back" id="back-from-tutorial" type="button"></button>

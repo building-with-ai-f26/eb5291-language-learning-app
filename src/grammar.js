@@ -1,3 +1,4 @@
+import './best-friend.js';
 import { describingThings, grammarExercises, grammarRoles, grammarRules } from './grammar-content.js';
 import { createTileBuilder, matchesAnswer } from './tiles.js';
 import { unlockedLevel } from './vocabulary.js';
@@ -105,6 +106,7 @@ openGuide.addEventListener('click', () => {
   path.hidden = true;
   const locked = unlockedLevel() < describingThings.level;
   replay.hidden = locked;
+  document.querySelector('#open-best-friend').hidden = locked;
   document.querySelector('#tutorial-locked').hidden = !locked;
   if (hasStarted) replay.textContent = 'Replay Describing things tutorial';
   guide.hidden = false;

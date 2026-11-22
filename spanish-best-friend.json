@@ -1,0 +1,55 @@
+{
+  "source": "Spanish-First-30-Skills.xlsx",
+  "skillId": "es-sk-02",
+  "comparisonExampleId": "pink-house",
+  "question": "In which sentence is the friend doing the action?",
+  "answerId": "es-sk-02-e02",
+  "answerExplanation": "The friend does the arriving in the first sentence, so mi mejor amiga is the subject. In the second, saludo tells us that I do the greeting. Mi mejor amiga is the direct object, introduced by the personal a.",
+  "lexicon": {
+    "es-mi-det": { "lemma": "mi", "label": "Determiner", "gloss": "my", "note": "Mi tells us whose friend she is." },
+    "es-mejor-adj": { "lemma": "mejor", "label": "Adjective", "gloss": "better / best", "note": "Mejor means “best” here and comes before amiga in this phrase." },
+    "es-amiga-noun": { "lemma": "amiga", "label": "Noun", "gloss": "female friend", "note": "Amiga is the main word in the phrase. It names the friend." },
+    "es-llegar-verb": { "lemma": "llegar", "label": "Verb", "gloss": "arrive", "note": "Llega is the form of llegar used here. It means “arrives.”" },
+    "es-hoy-adv": { "lemma": "hoy", "label": "Adverb", "gloss": "today", "note": "Hoy tells us when the friend arrives." },
+    "es-saludar-verb": { "lemma": "saludar", "label": "Verb", "gloss": "greet", "note": "Saludo is the form of saludar meaning “I greet.” The verb tells us who is doing the greeting." },
+    "es-a-adp": { "lemma": "a", "label": "Preposition", "gloss": "to / at (also personal a)", "note": "This is the personal a. It introduces the person being greeted." }
+  },
+  "examples": [
+    {
+      "id": "es-sk-02-e01",
+      "spanish": "Mi mejor amiga",
+      "english": "My best friend",
+      "tokens": [
+        { "text": "Mi", "translation": "My", "lexemeId": "es-mi-det" },
+        { "text": "mejor", "translation": "best", "lexemeId": "es-mejor-adj" },
+        { "text": "amiga", "translation": "friend", "lexemeId": "es-amiga-noun" }
+      ]
+    },
+    {
+      "id": "es-sk-02-e02",
+      "spanish": "Mi mejor amiga llega hoy.",
+      "english": "My best friend arrives today.",
+      "tokens": [
+        { "text": "Mi", "translation": "My", "lexemeId": "es-mi-det" },
+        { "text": "mejor", "translation": "best", "lexemeId": "es-mejor-adj" },
+        { "text": "amiga", "translation": "friend", "lexemeId": "es-amiga-noun", "role": "Subject", "note": "The whole phrase mi mejor amiga is the subject. The friend is the one who arrives." },
+        { "text": "llega", "translation": "arrives", "lexemeId": "es-llegar-verb" },
+        { "text": "hoy", "translation": "today", "lexemeId": "es-hoy-adv" },
+        { "text": "." }
+      ]
+    },
+    {
+      "id": "es-sk-02-e03",
+      "spanish": "Saludo a mi mejor amiga.",
+      "english": "I greet my best friend.",
+      "tokens": [
+        { "text": "Saludo", "translation": "I greet", "lexemeId": "es-saludar-verb" },
+        { "text": "a", "lexemeId": "es-a-adp" },
+        { "text": "mi", "translation": "my", "lexemeId": "es-mi-det" },
+        { "text": "mejor", "translation": "best", "lexemeId": "es-mejor-adj" },
+        { "text": "amiga", "translation": "friend", "lexemeId": "es-amiga-noun", "role": "Direct object", "note": "The whole phrase mi mejor amiga is the direct object. The friend is the person I greet." },
+        { "text": "." }
+      ]
+    }
+  ]
+}

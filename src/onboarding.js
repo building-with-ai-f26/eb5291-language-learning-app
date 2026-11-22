@@ -1,10 +1,12 @@
+import { unlockedLevel } from './vocabulary.js';
+
 const profileKey = 'spanish-study.profile';
 const activityKey = 'spanish-study.profile-active';
 const welcomeScreen = document.querySelector('#welcome-screen');
 const welcomeTitle = document.querySelector('#welcome-title');
 const createButton = document.querySelector('#create-local-profile');
 const continueButton = document.querySelector('#continue-local-profile');
-const leaveButton = document.querySelector('#leave-profile');
+const leaveButtons = document.querySelectorAll('[data-leave-profile]');
 const pathUsername = document.querySelector('#path-username');
 const usernameScreen = document.querySelector('#username-screen');
 const languageScreen = document.querySelector('#language-screen');
@@ -16,6 +18,15 @@ const spanishButton = document.querySelector('#choose-spanish');
 const intro = document.querySelector('.intro');
 const path = document.querySelector('.path');
 const pathTitle = document.querySelector('#path-title');
+const learningHome = document.querySelector('#learning-home');
+const learningTitle = document.querySelector('#learning-title');
+const learningUsername = document.querySelector('#learning-username');
+const courseProgress = document.querySelector('#course-progress');
+
+const workedExample = document.querySelector('#worked-example');
+for (const example of document.querySelectorAll('[data-worked-example]')) {
+  example.append(workedExample.content.cloneNode(true));
+}
 
 function readProfile() {
   try {
@@ -64,15 +75,20 @@ function showScreen(moveFocus = false, choosingUsername = false) {
   welcomeScreen.hidden = choosingUsername || active;
   usernameScreen.hidden = !choosingUsername;
   languageScreen.hidden = !choosingLanguage;
-  intro.hidden = !ready;
-  path.hidden = !ready;
+  intro.hidden = true;
+  path.hidden = true;
+  learningHome.hidden = !ready;
   createButton.hidden = Boolean(username);
   continueButton.hidden = !username;
   continueButton.textContent = username ? `Continue as ${username}` : '';
   pathUsername.textContent = username;
+  learningUsername.textContent = username;
+  courseProgress.textContent = unlockedLevel() === 2
+    ? 'Level 1 review passed · Level 2 unlocked'
+    : 'Level 1 available · Level 2 locked';
 
   if (moveFocus) {
-    const nextFocus = choosingUsername ? usernameInput : ready ? pathTitle
+    const nextFocus = choosingUsername ? usernameInput : ready ? learningTitle
       : choosingLanguage ? languageTitle : welcomeTitle;
     nextFocus.focus();
   }
@@ -88,10 +104,21 @@ continueButton.addEventListener('click', () => {
   showScreen(true);
 });
 
-leaveButton.addEventListener('click', () => {
-  setActive(false);
-  showScreen(true);
+for (const button of leaveButtons) {
+  button.addEventListener('click', () => {
+    setActive(false);
+    showScreen(true);
+  });
+}
+
+document.querySelector('#continue-course').addEventListener('click', () => {
+  learningHome.hidden = true;
+  intro.hidden = false;
+  path.hidden = false;
+  pathTitle.focus();
 });
+
+document.querySelector('#back-to-learning').addEventListener('click', () => showScreen(true));
 
 usernameForm.addEventListener('submit', (event) => {
   event.preventDefault();
