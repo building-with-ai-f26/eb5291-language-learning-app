@@ -1,0 +1,583 @@
+{
+  "schemaVersion": 1,
+  "language": "es",
+  "roles": {
+    "article": "Article",
+    "noun": "Noun",
+    "adjective": "Adjective",
+    "quantity": "Quantity",
+    "verb": "Verb",
+    "pronoun": "Pronoun",
+    "detail": "Detail"
+  },
+  "rules": [
+    {
+      "id": "adjective-agreement",
+      "title": "Describing things",
+      "summary": "Put the color after the thing you're describing in these phrases. Many color words, like blanco, change to match the noun.",
+      "takeaways": [
+        "Casa is feminine and coche is masculine. Compare una casa blanca with un coche blanco.",
+        "With more than one house, both words become plural: dos casas blancas.",
+        "Some color words have one form for both genders. You can say una casa rosa and un coche rosa."
+      ],
+      "examples": [
+        {
+          "id": "white-house",
+          "english": "A white house",
+          "spanish": "Una casa blanca",
+          "parts": [
+            {
+              "text": "Una",
+              "role": "article"
+            },
+            {
+              "text": "casa",
+              "role": "noun"
+            },
+            {
+              "text": "blanca",
+              "role": "adjective"
+            }
+          ],
+          "explanation": "Casa is feminine and singular. It takes una, and blanco changes to blanca."
+        },
+        {
+          "id": "white-car",
+          "english": "A white car",
+          "spanish": "Un coche blanco",
+          "parts": [
+            {
+              "text": "Un",
+              "role": "article"
+            },
+            {
+              "text": "coche",
+              "role": "noun"
+            },
+            {
+              "text": "blanco",
+              "role": "adjective"
+            }
+          ],
+          "explanation": "Coche is masculine and singular. Use un and blanco."
+        },
+        {
+          "id": "white-houses",
+          "english": "Two white houses",
+          "spanish": "Dos casas blancas",
+          "parts": [
+            {
+              "text": "Dos",
+              "role": "quantity"
+            },
+            {
+              "text": "casas",
+              "role": "noun"
+            },
+            {
+              "text": "blancas",
+              "role": "adjective"
+            }
+          ],
+          "explanation": "Casas names more than one house. Blancas keeps the feminine ending and adds s for the plural."
+        },
+        {
+          "id": "pink-house",
+          "english": "A pink house",
+          "spanish": "Una casa rosa",
+          "parts": [
+            {
+              "text": "Una",
+              "role": "article"
+            },
+            {
+              "text": "casa",
+              "role": "noun"
+            },
+            {
+              "text": "rosa",
+              "role": "adjective"
+            }
+          ],
+          "explanation": "Rosa follows casa. The color word rosa doesn't change for gender."
+        },
+        {
+          "id": "pink-car",
+          "english": "A pink car",
+          "spanish": "Un coche rosa",
+          "parts": [
+            {
+              "text": "Un",
+              "role": "article"
+            },
+            {
+              "text": "coche",
+              "role": "noun"
+            },
+            {
+              "text": "rosa",
+              "role": "adjective"
+            }
+          ],
+          "explanation": "Changing casa to coche changes una to un. Rosa stays the same."
+        },
+        {
+          "id": "dinner-ready",
+          "english": "Dinner is ready.",
+          "spanish": "La cena está lista.",
+          "parts": [
+            {
+              "text": "La",
+              "role": "article"
+            },
+            {
+              "text": "cena",
+              "role": "noun"
+            },
+            {
+              "text": "está",
+              "role": "verb"
+            },
+            {
+              "text": "lista",
+              "role": "adjective"
+            }
+          ],
+          "explanation": "Lista describes la cena and matches it, even though está comes between the noun and adjective."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "picked": "Una casa blanco",
+          "better": "Una casa blanca",
+          "feedback": "Casa is feminine. Choose blanca to describe it."
+        },
+        {
+          "picked": "Dos casas blanca",
+          "better": "Dos casas blancas",
+          "feedback": "Casas is plural, so add s to blanca too."
+        }
+      ],
+      "sources": [
+        {
+          "title": "RAE and ASALE · Colores",
+          "url": "https://www.rae.es/dpd/colores"
+        },
+        {
+          "title": "RAE and ASALE · Rosa",
+          "url": "https://dle.rae.es/rosa"
+        }
+      ]
+    },
+    {
+      "id": "present-tense",
+      "title": "How the verb tells you who",
+      "summary": "In Spanish, the verb often gives you enough information to leave out the subject pronoun. Quiero already means “I want.”",
+      "takeaways": [
+        "Quiero and tengo are the forms you use to talk about yourself.",
+        "You can include yo when you want to emphasize who wants or has something.",
+        "With another subject, the verb can change. Compare tengo with el cliente tiene."
+      ],
+      "examples": [
+        {
+          "id": "want-water-without-yo",
+          "english": "I want water.",
+          "spanish": "Quiero agua.",
+          "parts": [
+            {
+              "text": "Quiero",
+              "role": "verb"
+            },
+            {
+              "text": "agua",
+              "role": "noun"
+            }
+          ],
+          "explanation": "The form quiero tells you the speaker is the one who wants water."
+        },
+        {
+          "id": "want-water-with-yo",
+          "english": "I want water.",
+          "spanish": "Yo quiero agua.",
+          "parts": [
+            {
+              "text": "Yo",
+              "role": "pronoun"
+            },
+            {
+              "text": "quiero",
+              "role": "verb"
+            },
+            {
+              "text": "agua",
+              "role": "noun"
+            }
+          ],
+          "explanation": "Yo is also correct. It can emphasize the speaker, for example when several people are ordering."
+        },
+        {
+          "id": "have-bread-without-yo",
+          "english": "I have bread.",
+          "spanish": "Tengo pan.",
+          "parts": [
+            {
+              "text": "Tengo",
+              "role": "verb"
+            },
+            {
+              "text": "pan",
+              "role": "noun"
+            }
+          ],
+          "explanation": "Tengo is the form of tener for “I have.”"
+        },
+        {
+          "id": "customer-has-a-question",
+          "english": "The customer has a question.",
+          "spanish": "El cliente tiene una pregunta.",
+          "parts": [
+            {
+              "text": "El",
+              "role": "article"
+            },
+            {
+              "text": "cliente",
+              "role": "noun"
+            },
+            {
+              "text": "tiene",
+              "role": "verb"
+            },
+            {
+              "text": "una",
+              "role": "article"
+            },
+            {
+              "text": "pregunta",
+              "role": "noun"
+            }
+          ],
+          "explanation": "Use tiene to talk about what the customer has."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "picked": "Yo tiene pan.",
+          "better": "Yo tengo pan.",
+          "feedback": "For “I have,” use tengo. Tiene is the form you'd use with a subject like el cliente."
+        }
+      ],
+      "sources": [
+        {
+          "title": "RAE and ASALE · Sujeto tácito",
+          "url": "https://www.rae.es/gtg/sujeto-t%C3%A1cito"
+        }
+      ]
+    },
+    {
+      "id": "prepositional-phrase",
+      "title": "Adding a detail",
+      "summary": "A short group that starts with con, sin, or en can add information about what goes with something, what to leave out, or how you get somewhere.",
+      "takeaways": [
+        "Put con leche after café for “coffee with milk.” The thing before con is the one you're describing in this phrase.",
+        "Use sin leche to say “without milk.”",
+        "En metro describes how you're traveling. Con can also say who is with you, as in con un amigo."
+      ],
+      "examples": [
+        {
+          "id": "coffee-main-item",
+          "english": "I want coffee with milk.",
+          "spanish": "Quiero café con leche.",
+          "parts": [
+            {
+              "text": "Quiero",
+              "role": "verb"
+            },
+            {
+              "text": "café",
+              "role": "noun"
+            },
+            {
+              "text": "con leche",
+              "role": "detail"
+            }
+          ],
+          "explanation": "Café is what you want. Con leche describes how you want it."
+        },
+        {
+          "id": "milk-main-item",
+          "english": "I want milk with coffee.",
+          "spanish": "Quiero leche con café.",
+          "parts": [
+            {
+              "text": "Quiero",
+              "role": "verb"
+            },
+            {
+              "text": "leche",
+              "role": "noun"
+            },
+            {
+              "text": "con café",
+              "role": "detail"
+            }
+          ],
+          "explanation": "In this order, the main thing you're asking for is milk."
+        },
+        {
+          "id": "tea-without-milk",
+          "english": "I want tea without milk.",
+          "spanish": "Quiero té sin leche.",
+          "parts": [
+            {
+              "text": "Quiero",
+              "role": "verb"
+            },
+            {
+              "text": "té",
+              "role": "noun"
+            },
+            {
+              "text": "sin leche",
+              "role": "detail"
+            }
+          ],
+          "explanation": "Sin leche tells the person what to leave out."
+        },
+        {
+          "id": "by-subway",
+          "english": "I want to go by subway.",
+          "spanish": "Quiero ir en metro.",
+          "parts": [
+            {
+              "text": "Quiero ir",
+              "role": "verb"
+            },
+            {
+              "text": "en metro",
+              "role": "detail"
+            }
+          ],
+          "explanation": "En metro tells you the means of transport."
+        }
+      ],
+      "commonMistakes": [
+        {
+          "picked": "Quiero leche con café.",
+          "better": "Quiero café con leche.",
+          "feedback": "For “coffee with milk,” put café first and follow it with con leche. The other order means “milk with coffee.”"
+        }
+      ],
+      "sources": [
+        {
+          "title": "RAE and ASALE · Grupo preposicional",
+          "url": "https://www.rae.es/gtg/grupo-preposicional"
+        },
+        {
+          "title": "RAE and ASALE · Con",
+          "url": "https://dle.rae.es/con"
+        }
+      ]
+    }
+  ],
+  "tutorials": [
+    {
+      "id": "describing-things",
+      "ruleId": "adjective-agreement",
+      "title": "Describing things",
+      "level": 2,
+      "steps": [
+        {
+          "type": "compare",
+          "exampleIds": [
+            "white-house",
+            "white-car"
+          ],
+          "instruction": "Compare the Spanish phrases. What happens to the article and color when you swap the house for a car?"
+        },
+        {
+          "type": "build",
+          "exerciseId": "build-white-car"
+        },
+        {
+          "type": "compare",
+          "exampleIds": [
+            "white-house",
+            "white-houses"
+          ],
+          "instruction": "Now compare one house with two. Look for the two words that gain an s."
+        },
+        {
+          "type": "build",
+          "exerciseId": "build-two-white-houses"
+        },
+        {
+          "type": "compare",
+          "exampleIds": [
+            "pink-house",
+            "pink-car"
+          ],
+          "instruction": "Try the same swap with pink. Which word stays the same?"
+        },
+        {
+          "type": "build",
+          "exerciseId": "build-i-want-a-pink-house"
+        }
+      ]
+    }
+  ],
+  "practiceExercises": [
+    {
+      "id": "build-white-car",
+      "level": 2,
+      "contexts": [
+        "daily-life"
+      ],
+      "grammarFocus": "adjective-agreement",
+      "english": "A white car",
+      "spanish": "Un coche blanco",
+      "tileBank": [
+        "blanca",
+        "coche",
+        "una",
+        "blanco",
+        "un"
+      ],
+      "acceptedAnswers": [
+        [
+          "un",
+          "coche",
+          "blanco"
+        ]
+      ],
+      "hint": "Start with the Spanish word for “a.” Put the color after coche.",
+      "explanation": "Coche is masculine and singular, so “a” is un and “white” is blanco.",
+      "mistakeFeedback": [
+        {
+          "answer": [
+            "un",
+            "coche",
+            "blanca"
+          ],
+          "feedback": "Coche is masculine. Use blanco to describe it."
+        },
+        {
+          "answer": [
+            "una",
+            "coche",
+            "blanco"
+          ],
+          "feedback": "Coche is masculine. Use un before it."
+        },
+        {
+          "answer": [
+            "un",
+            "blanco",
+            "coche"
+          ],
+          "feedback": "For this everyday description, put coche first and follow it with blanco."
+        }
+      ]
+    },
+    {
+      "id": "build-two-white-houses",
+      "level": 2,
+      "contexts": [
+        "daily-life"
+      ],
+      "grammarFocus": "adjective-agreement",
+      "english": "Two white houses",
+      "spanish": "Dos casas blancas",
+      "tileBank": [
+        "blanca",
+        "casas",
+        "dos",
+        "blancos",
+        "casa",
+        "blancas"
+      ],
+      "acceptedAnswers": [
+        [
+          "dos",
+          "casas",
+          "blancas"
+        ]
+      ],
+      "hint": "With two houses, both “house” and “white” need a plural form.",
+      "explanation": "Casas is feminine plural. Blancas matches it.",
+      "mistakeFeedback": [
+        {
+          "answer": [
+            "dos",
+            "casas",
+            "blanca"
+          ],
+          "feedback": "Casas already shows there are two. Add an s to blanca too."
+        },
+        {
+          "answer": [
+            "dos",
+            "casas",
+            "blancos"
+          ],
+          "feedback": "Blancos is masculine plural. Casas is feminine plural, so use blancas."
+        },
+        {
+          "answer": [
+            "dos",
+            "casa",
+            "blancas"
+          ],
+          "feedback": "Use casas to show that there are two houses."
+        }
+      ]
+    },
+    {
+      "id": "build-i-want-a-pink-house",
+      "level": 2,
+      "contexts": [
+        "daily-life"
+      ],
+      "grammarFocus": "adjective-agreement",
+      "english": "I want a pink house.",
+      "spanish": "Quiero una casa rosa.",
+      "tileBank": [
+        "rosa",
+        "un",
+        "casa",
+        "quiero",
+        "una"
+      ],
+      "acceptedAnswers": [
+        [
+          "quiero",
+          "una",
+          "casa",
+          "rosa"
+        ]
+      ],
+      "hint": "Start with quiero. After it, build “a pink house.”",
+      "explanation": "Quiero says what you want. Una goes with casa, and rosa follows it to give the color.",
+      "mistakeFeedback": [
+        {
+          "answer": [
+            "quiero",
+            "un",
+            "casa",
+            "rosa"
+          ],
+          "feedback": "Casa is feminine, so use una before it."
+        },
+        {
+          "answer": [
+            "quiero",
+            "una",
+            "rosa",
+            "casa"
+          ],
+          "feedback": "Put the thing you're describing first: casa rosa."
+        }
+      ]
+    }
+  ]
+}

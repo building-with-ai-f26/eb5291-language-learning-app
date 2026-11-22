@@ -1,0 +1,1473 @@
+[
+  {
+    "id": "agua",
+    "spanish": "agua",
+    "english": "water",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Quiero agua.",
+      "english": "I want water."
+    }
+  },
+  {
+    "id": "cafe",
+    "spanish": "café",
+    "english": "coffee",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "social"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Quiero un café.",
+      "english": "I want a coffee."
+    }
+  },
+  {
+    "id": "te",
+    "spanish": "té",
+    "english": "tea",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Quiero té.",
+      "english": "I want tea."
+    }
+  },
+  {
+    "id": "pan",
+    "spanish": "pan",
+    "english": "bread",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tengo pan.",
+      "english": "I have bread."
+    }
+  },
+  {
+    "id": "leche",
+    "spanish": "leche",
+    "english": "milk",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Quiero café con leche.",
+      "english": "I want coffee with milk."
+    }
+  },
+  {
+    "id": "quiero",
+    "spanish": "quiero",
+    "english": "I want",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero una manzana.",
+      "english": "I want an apple."
+    }
+  },
+  {
+    "id": "tengo",
+    "spanish": "tengo",
+    "english": "I have",
+    "level": 1,
+    "contexts": [
+      "daily-life",
+      "social"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Tengo una pregunta.",
+      "english": "I have a question."
+    }
+  },
+  {
+    "id": "gracias",
+    "spanish": "gracias",
+    "english": "thank you",
+    "level": 1,
+    "contexts": [
+      "social",
+      "food-and-drink"
+    ],
+    "partOfSpeech": "interjection",
+    "example": {
+      "spanish": "Gracias por el café.",
+      "english": "Thank you for the coffee."
+    }
+  },
+  {
+    "id": "hola",
+    "spanish": "hola",
+    "english": "hello",
+    "level": 1,
+    "contexts": [
+      "social"
+    ],
+    "partOfSpeech": "interjection",
+    "example": {
+      "spanish": "Hola, soy Ana.",
+      "english": "Hello, I'm Ana."
+    }
+  },
+  {
+    "id": "adios",
+    "spanish": "adiós",
+    "english": "goodbye",
+    "level": 1,
+    "contexts": [
+      "social"
+    ],
+    "partOfSpeech": "interjection",
+    "example": {
+      "spanish": "Adiós, Ana.",
+      "english": "Goodbye, Ana."
+    }
+  },
+  {
+    "id": "manzana",
+    "spanish": "manzana",
+    "english": "apple",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tengo una manzana.",
+      "english": "I have an apple."
+    }
+  },
+  {
+    "id": "arroz",
+    "spanish": "arroz",
+    "english": "rice",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Quiero arroz.",
+      "english": "I want rice."
+    }
+  },
+  {
+    "id": "queso",
+    "spanish": "queso",
+    "english": "cheese",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Quiero pan con queso.",
+      "english": "I want bread with cheese."
+    }
+  },
+  {
+    "id": "casa",
+    "spanish": "casa",
+    "english": "house",
+    "level": 1,
+    "contexts": [
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Mi casa es pequeña.",
+      "english": "My house is small."
+    }
+  },
+  {
+    "id": "mesa",
+    "spanish": "mesa",
+    "english": "table",
+    "level": 1,
+    "contexts": [
+      "daily-life",
+      "food-and-drink"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El pan está en la mesa.",
+      "english": "The bread is on the table."
+    }
+  },
+  {
+    "id": "silla",
+    "spanish": "silla",
+    "english": "chair",
+    "level": 1,
+    "contexts": [
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La silla está aquí.",
+      "english": "The chair is here."
+    }
+  },
+  {
+    "id": "libro",
+    "spanish": "libro",
+    "english": "book",
+    "level": 1,
+    "contexts": [
+      "daily-life",
+      "weekend"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tengo un libro.",
+      "english": "I have a book."
+    }
+  },
+  {
+    "id": "vaso",
+    "spanish": "vaso",
+    "english": "glass",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Quiero un vaso de agua.",
+      "english": "I want a glass of water."
+    }
+  },
+  {
+    "id": "comer",
+    "spanish": "comer",
+    "english": "to eat",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero comer pan.",
+      "english": "I want to eat bread."
+    }
+  },
+  {
+    "id": "beber",
+    "spanish": "beber",
+    "english": "to drink",
+    "level": 1,
+    "contexts": [
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero beber agua.",
+      "english": "I want to drink water."
+    }
+  },
+  {
+    "id": "calle",
+    "spanish": "calle",
+    "english": "street",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La tienda está en esta calle.",
+      "english": "The store is on this street."
+    }
+  },
+  {
+    "id": "estacion",
+    "spanish": "estación",
+    "english": "station",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "¿Dónde está la estación?",
+      "english": "Where is the station?"
+    }
+  },
+  {
+    "id": "autobus",
+    "spanish": "autobús",
+    "english": "bus",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El autobús llega tarde.",
+      "english": "The bus arrives late."
+    }
+  },
+  {
+    "id": "tren",
+    "spanish": "tren",
+    "english": "train",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Vamos en tren.",
+      "english": "We're going by train."
+    }
+  },
+  {
+    "id": "metro",
+    "spanish": "metro",
+    "english": "subway",
+    "level": 2,
+    "contexts": [
+      "getting-around"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La estación de metro está cerca.",
+      "english": "The subway station is nearby."
+    }
+  },
+  {
+    "id": "parada",
+    "spanish": "parada",
+    "english": "stop",
+    "level": 2,
+    "contexts": [
+      "getting-around"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Busco la parada del autobús.",
+      "english": "I'm looking for the bus stop."
+    }
+  },
+  {
+    "id": "mapa",
+    "spanish": "mapa",
+    "english": "map",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tengo un mapa de la ciudad.",
+      "english": "I have a map of the city."
+    }
+  },
+  {
+    "id": "ciudad",
+    "spanish": "ciudad",
+    "english": "city",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La ciudad es grande.",
+      "english": "The city is big."
+    }
+  },
+  {
+    "id": "parque",
+    "spanish": "parque",
+    "english": "park",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "weekend"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Quiero caminar por el parque.",
+      "english": "I want to walk through the park."
+    }
+  },
+  {
+    "id": "tienda",
+    "spanish": "tienda",
+    "english": "store",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La tienda está abierta.",
+      "english": "The store is open."
+    }
+  },
+  {
+    "id": "entrada",
+    "spanish": "entrada",
+    "english": "entrance",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La entrada está a la derecha.",
+      "english": "The entrance is on the right."
+    }
+  },
+  {
+    "id": "salida",
+    "spanish": "salida",
+    "english": "exit",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La salida está a la izquierda.",
+      "english": "The exit is on the left."
+    }
+  },
+  {
+    "id": "derecha",
+    "spanish": "derecha",
+    "english": "right",
+    "level": 2,
+    "contexts": [
+      "getting-around"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Gira a la derecha.",
+      "english": "Turn right."
+    }
+  },
+  {
+    "id": "izquierda",
+    "spanish": "izquierda",
+    "english": "left",
+    "level": 2,
+    "contexts": [
+      "getting-around"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Gira a la izquierda.",
+      "english": "Turn left."
+    }
+  },
+  {
+    "id": "cerca",
+    "spanish": "cerca",
+    "english": "nearby",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "adverb",
+    "example": {
+      "spanish": "La tienda está cerca.",
+      "english": "The store is nearby."
+    }
+  },
+  {
+    "id": "lejos",
+    "spanish": "lejos",
+    "english": "far away",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "adverb",
+    "example": {
+      "spanish": "El aeropuerto está lejos.",
+      "english": "The airport is far away."
+    }
+  },
+  {
+    "id": "aqui",
+    "spanish": "aquí",
+    "english": "here",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "daily-life"
+    ],
+    "partOfSpeech": "adverb",
+    "example": {
+      "spanish": "El autobús para aquí.",
+      "english": "The bus stops here."
+    }
+  },
+  {
+    "id": "alli",
+    "spanish": "allí",
+    "english": "there",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "daily-life"
+    ],
+    "partOfSpeech": "adverb",
+    "example": {
+      "spanish": "La entrada está allí.",
+      "english": "The entrance is there."
+    }
+  },
+  {
+    "id": "caminar",
+    "spanish": "caminar",
+    "english": "to walk",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "weekend"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero caminar hasta la estación.",
+      "english": "I want to walk to the station."
+    }
+  },
+  {
+    "id": "llegar",
+    "spanish": "llegar",
+    "english": "to arrive",
+    "level": 2,
+    "contexts": [
+      "getting-around",
+      "travel"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero llegar temprano.",
+      "english": "I want to arrive early."
+    }
+  },
+  {
+    "id": "amigo",
+    "spanish": "amigo",
+    "english": "friend",
+    "level": 3,
+    "contexts": [
+      "social",
+      "weekend"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Voy al cine con un amigo.",
+      "english": "I'm going to the movies with a friend."
+    }
+  },
+  {
+    "id": "familia",
+    "spanish": "familia",
+    "english": "family",
+    "level": 3,
+    "contexts": [
+      "social",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Mi familia vive cerca.",
+      "english": "My family lives nearby."
+    }
+  },
+  {
+    "id": "fiesta",
+    "spanish": "fiesta",
+    "english": "party",
+    "level": 3,
+    "contexts": [
+      "social",
+      "weekend"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tenemos una fiesta el sábado.",
+      "english": "We're having a party on Saturday."
+    }
+  },
+  {
+    "id": "pelicula",
+    "spanish": "película",
+    "english": "movie",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "social"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Quiero ver una película.",
+      "english": "I want to watch a movie."
+    }
+  },
+  {
+    "id": "musica",
+    "spanish": "música",
+    "english": "music",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "social"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Me gusta escuchar música.",
+      "english": "I like listening to music."
+    }
+  },
+  {
+    "id": "concierto",
+    "spanish": "concierto",
+    "english": "concert",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "social"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El concierto empieza a las ocho.",
+      "english": "The concert starts at eight."
+    }
+  },
+  {
+    "id": "juego",
+    "spanish": "juego",
+    "english": "game",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "social"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tengo un juego nuevo.",
+      "english": "I have a new game."
+    }
+  },
+  {
+    "id": "cena",
+    "spanish": "cena",
+    "english": "dinner",
+    "level": 3,
+    "contexts": [
+      "food-and-drink",
+      "social"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La cena está lista.",
+      "english": "Dinner is ready."
+    }
+  },
+  {
+    "id": "sabado",
+    "spanish": "sábado",
+    "english": "Saturday",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "social"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El sábado voy al parque.",
+      "english": "I'm going to the park on Saturday."
+    }
+  },
+  {
+    "id": "domingo",
+    "spanish": "domingo",
+    "english": "Sunday",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "social"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El domingo descanso.",
+      "english": "I rest on Sunday."
+    }
+  },
+  {
+    "id": "ayer",
+    "spanish": "ayer",
+    "english": "yesterday",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "daily-life"
+    ],
+    "partOfSpeech": "adverb",
+    "example": {
+      "spanish": "Ayer vi una película.",
+      "english": "I watched a movie yesterday."
+    }
+  },
+  {
+    "id": "hoy",
+    "spanish": "hoy",
+    "english": "today",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "daily-life"
+    ],
+    "partOfSpeech": "adverb",
+    "example": {
+      "spanish": "Hoy tengo tiempo.",
+      "english": "I have time today."
+    }
+  },
+  {
+    "id": "juntos",
+    "spanish": "juntos",
+    "english": "together",
+    "level": 3,
+    "contexts": [
+      "social",
+      "weekend"
+    ],
+    "partOfSpeech": "adverb",
+    "example": {
+      "spanish": "Vamos juntos al concierto.",
+      "english": "We're going to the concert together."
+    }
+  },
+  {
+    "id": "cansado",
+    "spanish": "cansado",
+    "english": "tired",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "daily-life"
+    ],
+    "partOfSpeech": "adjective",
+    "example": {
+      "spanish": "Estoy cansado después del viaje.",
+      "english": "I'm tired after the trip."
+    }
+  },
+  {
+    "id": "contento",
+    "spanish": "contento",
+    "english": "happy",
+    "level": 3,
+    "contexts": [
+      "social",
+      "daily-life"
+    ],
+    "partOfSpeech": "adjective",
+    "example": {
+      "spanish": "Estoy contento de verte.",
+      "english": "I'm happy to see you."
+    }
+  },
+  {
+    "id": "visitar",
+    "spanish": "visitar",
+    "english": "to visit",
+    "level": 3,
+    "contexts": [
+      "social",
+      "weekend"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero visitar a mi familia.",
+      "english": "I want to visit my family."
+    }
+  },
+  {
+    "id": "descansar",
+    "spanish": "descansar",
+    "english": "to rest",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "daily-life"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero descansar en casa.",
+      "english": "I want to rest at home."
+    }
+  },
+  {
+    "id": "cocinar",
+    "spanish": "cocinar",
+    "english": "to cook",
+    "level": 3,
+    "contexts": [
+      "food-and-drink",
+      "weekend"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Me gusta cocinar los domingos.",
+      "english": "I like cooking on Sundays."
+    }
+  },
+  {
+    "id": "escuchar",
+    "spanish": "escuchar",
+    "english": "to listen",
+    "level": 3,
+    "contexts": [
+      "weekend",
+      "daily-life"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero escuchar música.",
+      "english": "I want to listen to music."
+    }
+  },
+  {
+    "id": "invitar",
+    "spanish": "invitar",
+    "english": "to invite",
+    "level": 3,
+    "contexts": [
+      "social",
+      "weekend"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero invitar a Ana a cenar.",
+      "english": "I want to invite Ana to dinner."
+    }
+  },
+  {
+    "id": "aeropuerto",
+    "spanish": "aeropuerto",
+    "english": "airport",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "getting-around"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El aeropuerto está lejos.",
+      "english": "The airport is far away."
+    }
+  },
+  {
+    "id": "vuelo",
+    "spanish": "vuelo",
+    "english": "flight",
+    "level": 4,
+    "contexts": [
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Mi vuelo sale a las nueve.",
+      "english": "My flight leaves at nine."
+    }
+  },
+  {
+    "id": "pasaporte",
+    "spanish": "pasaporte",
+    "english": "passport",
+    "level": 4,
+    "contexts": [
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Mi pasaporte está en la maleta.",
+      "english": "My passport is in the suitcase."
+    }
+  },
+  {
+    "id": "maleta",
+    "spanish": "maleta",
+    "english": "suitcase",
+    "level": 4,
+    "contexts": [
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La maleta está en el hotel.",
+      "english": "The suitcase is at the hotel."
+    }
+  },
+  {
+    "id": "equipaje",
+    "spanish": "equipaje",
+    "english": "luggage",
+    "level": 4,
+    "contexts": [
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "¿Dónde está mi equipaje?",
+      "english": "Where is my luggage?"
+    }
+  },
+  {
+    "id": "hotel",
+    "spanish": "hotel",
+    "english": "hotel",
+    "level": 4,
+    "contexts": [
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El hotel está cerca de la estación.",
+      "english": "The hotel is near the station."
+    }
+  },
+  {
+    "id": "habitacion",
+    "spanish": "habitación",
+    "english": "room",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Mi habitación está en el segundo piso.",
+      "english": "My room is on the second floor."
+    }
+  },
+  {
+    "id": "llave",
+    "spanish": "llave",
+    "english": "key",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tengo la llave de la habitación.",
+      "english": "I have the key to the room."
+    }
+  },
+  {
+    "id": "reserva",
+    "spanish": "reserva",
+    "english": "reservation",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "food-and-drink"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tengo una reserva a nombre de Ana.",
+      "english": "I have a reservation under the name Ana."
+    }
+  },
+  {
+    "id": "recepcion",
+    "spanish": "recepción",
+    "english": "front desk",
+    "level": 4,
+    "contexts": [
+      "travel"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "La llave está en recepción.",
+      "english": "The key is at the front desk."
+    }
+  },
+  {
+    "id": "billete",
+    "spanish": "billete",
+    "english": "ticket",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "getting-around"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tengo un billete de tren.",
+      "english": "I have a train ticket."
+    }
+  },
+  {
+    "id": "horario",
+    "spanish": "horario",
+    "english": "schedule",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "getting-around",
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "¿Dónde está el horario de los trenes?",
+      "english": "Where is the train schedule?"
+    }
+  },
+  {
+    "id": "disponible",
+    "spanish": "disponible",
+    "english": "available",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "work"
+    ],
+    "partOfSpeech": "adjective",
+    "example": {
+      "spanish": "¿Hay una habitación disponible?",
+      "english": "Is there a room available?"
+    }
+  },
+  {
+    "id": "incluido",
+    "spanish": "incluido",
+    "english": "included",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "food-and-drink"
+    ],
+    "partOfSpeech": "adjective",
+    "example": {
+      "spanish": "El desayuno está incluido.",
+      "english": "Breakfast is included."
+    }
+  },
+  {
+    "id": "caro",
+    "spanish": "caro",
+    "english": "expensive",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "daily-life"
+    ],
+    "partOfSpeech": "adjective",
+    "example": {
+      "spanish": "Este hotel es caro.",
+      "english": "This hotel is expensive."
+    }
+  },
+  {
+    "id": "barato",
+    "spanish": "barato",
+    "english": "cheap",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "daily-life"
+    ],
+    "partOfSpeech": "adjective",
+    "example": {
+      "spanish": "Busco un billete barato.",
+      "english": "I'm looking for a cheap ticket."
+    }
+  },
+  {
+    "id": "reservar",
+    "spanish": "reservar",
+    "english": "to book",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "food-and-drink"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero reservar una habitación.",
+      "english": "I want to book a room."
+    }
+  },
+  {
+    "id": "pagar",
+    "spanish": "pagar",
+    "english": "to pay",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "food-and-drink",
+      "daily-life"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero pagar con tarjeta.",
+      "english": "I want to pay by card."
+    }
+  },
+  {
+    "id": "cancelar",
+    "spanish": "cancelar",
+    "english": "to cancel",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "work"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Necesito cancelar mi reserva.",
+      "english": "I need to cancel my reservation."
+    }
+  },
+  {
+    "id": "factura",
+    "spanish": "factura",
+    "english": "invoice",
+    "level": 4,
+    "contexts": [
+      "travel",
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "¿Me puede enviar la factura por correo electrónico?",
+      "english": "Could you email me the invoice?"
+    }
+  },
+  {
+    "id": "reunion",
+    "spanish": "reunión",
+    "english": "meeting",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tenemos una reunión a las diez.",
+      "english": "We have a meeting at ten."
+    }
+  },
+  {
+    "id": "equipo",
+    "spanish": "equipo",
+    "english": "team",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El equipo trabaja en este proyecto.",
+      "english": "The team is working on this project."
+    }
+  },
+  {
+    "id": "oficina",
+    "spanish": "oficina",
+    "english": "office",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Estoy en la oficina.",
+      "english": "I'm at the office."
+    }
+  },
+  {
+    "id": "proyecto",
+    "spanish": "proyecto",
+    "english": "project",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El proyecto empieza el lunes.",
+      "english": "The project starts on Monday."
+    }
+  },
+  {
+    "id": "cliente",
+    "spanish": "cliente",
+    "english": "customer",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El cliente tiene una pregunta.",
+      "english": "The customer has a question."
+    }
+  },
+  {
+    "id": "presupuesto",
+    "spanish": "presupuesto",
+    "english": "budget",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Tenemos un presupuesto pequeño.",
+      "english": "We have a small budget."
+    }
+  },
+  {
+    "id": "informe",
+    "spanish": "informe",
+    "english": "report",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El informe está listo.",
+      "english": "The report is ready."
+    }
+  },
+  {
+    "id": "propuesta",
+    "spanish": "propuesta",
+    "english": "proposal",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Voy a enviar la propuesta hoy.",
+      "english": "I'm going to send the proposal today."
+    }
+  },
+  {
+    "id": "acuerdo",
+    "spanish": "acuerdo",
+    "english": "agreement",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Llegamos a un acuerdo con el cliente.",
+      "english": "We reached an agreement with the customer."
+    }
+  },
+  {
+    "id": "contrato",
+    "spanish": "contrato",
+    "english": "contract",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Necesito leer el contrato.",
+      "english": "I need to read the contract."
+    }
+  },
+  {
+    "id": "plazo",
+    "spanish": "plazo",
+    "english": "deadline",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "El plazo termina el viernes.",
+      "english": "The deadline is Friday."
+    }
+  },
+  {
+    "id": "correo",
+    "spanish": "correo",
+    "english": "email",
+    "level": 5,
+    "contexts": [
+      "work",
+      "daily-life"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "Te mando un correo esta tarde.",
+      "english": "I'll send you an email this afternoon."
+    }
+  },
+  {
+    "id": "archivo",
+    "spanish": "archivo",
+    "english": "file",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "noun",
+    "example": {
+      "spanish": "¿Puedes abrir el archivo?",
+      "english": "Can you open the file?"
+    }
+  },
+  {
+    "id": "urgente",
+    "spanish": "urgente",
+    "english": "urgent",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "adjective",
+    "example": {
+      "spanish": "Esto es urgente.",
+      "english": "This is urgent."
+    }
+  },
+  {
+    "id": "pendiente",
+    "spanish": "pendiente",
+    "english": "pending",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "adjective",
+    "example": {
+      "spanish": "La decisión está pendiente.",
+      "english": "The decision is pending."
+    }
+  },
+  {
+    "id": "enviar",
+    "spanish": "enviar",
+    "english": "to send",
+    "level": 5,
+    "contexts": [
+      "work",
+      "daily-life"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Voy a enviar el informe ahora.",
+      "english": "I'm going to send the report now."
+    }
+  },
+  {
+    "id": "revisar",
+    "spanish": "revisar",
+    "english": "to review",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Necesito revisar el presupuesto.",
+      "english": "I need to review the budget."
+    }
+  },
+  {
+    "id": "confirmar",
+    "spanish": "confirmar",
+    "english": "to confirm",
+    "level": 5,
+    "contexts": [
+      "work",
+      "travel"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Quiero confirmar la hora de la reunión.",
+      "english": "I want to confirm the meeting time."
+    }
+  },
+  {
+    "id": "aplazar",
+    "spanish": "aplazar",
+    "english": "to postpone",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "Tenemos que aplazar la reunión.",
+      "english": "We have to postpone the meeting."
+    }
+  },
+  {
+    "id": "aprobar",
+    "spanish": "aprobar",
+    "english": "to approve",
+    "level": 5,
+    "contexts": [
+      "work"
+    ],
+    "partOfSpeech": "verb",
+    "example": {
+      "spanish": "El equipo tiene que aprobar la propuesta.",
+      "english": "The team has to approve the proposal."
+    }
+  }
+]

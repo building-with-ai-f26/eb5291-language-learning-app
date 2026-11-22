@@ -1,6 +1,6 @@
-# [Project Name]
+# Spanish Study
 
-> **One-line pitch:** [Who is this for, and what job does it do for them?]
+A beginner Spanish app for learning everyday words, building sentences, and understanding why answers work.
 
 - **Builder:** [Your Name] (`@github-handle`)
 - **Pod:** [Pod Name / Number]
@@ -35,11 +35,13 @@ Create your PostHog account in Week 1. Install it on the Product Page and local 
 
 ## Local setup
 
-Clone **your own repository** and ask your coding agent to document the exact install and run commands here and in `AGENTS.md`.
+From the root of this checkout, run:
 
-```bash
-git clone https://github.com/building-with-ai-f26/<your-repo-name>.git
-cd <your-repo-name>
+```sh
+npm ci
+npm run dev
 ```
+
+Open the local URL printed by Vite and complete the username and Spanish setup. Practice everyday words, then pass the Level 1 review to unlock sentence practice. Run `npm run build` to verify the production build.
 
 If your app needs API keys, use a local environment file such as `.env`. Keep private keys out of source code, browser code, screenshots, and commits. The template ignores `.env`; `.env.example` contains placeholders only.

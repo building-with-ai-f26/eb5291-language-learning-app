@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fbf7ed">
+    <title>Spanish Study | Learning path</title>
+    <link rel="stylesheet" href="./src/styles.css">
+    <script type="module" src="./src/onboarding.js"></script>
+    <script type="module" src="./src/topics.js"></script>
+    <script type="module" src="./src/grammar.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <section class="level vocabulary onboarding" id="username-screen" aria-labelledby="username-title">
+        <h1 id="username-title"><label for="username">Choose a username</label></h1>
+        <form id="username-form">
+          <input id="username" name="username" type="text" autocomplete="username" required aria-describedby="username-error">
+          <p id="username-error" role="status"></p>
+          <button class="vocabulary-button onboarding-action" type="submit">Continue</button>
+        </form>
+      </section>
+
+      <section class="level vocabulary onboarding" id="language-screen" aria-labelledby="language-title" hidden>
+        <h1 id="language-title" tabindex="-1">What do you want to learn?</h1>
+        <button class="level level-button onboarding-language" id="choose-spanish" type="button">
+          <span class="level-number" aria-hidden="true">🌐</span>
+          <span class="level-title">Spanish <span lang="es">Español</span></span>
+        </button>
+      </section>
+
+      <header class="intro" hidden>
+        <p class="language">Spanish <span lang="es">Español</span></p>
+        <h1>From words<br>to sentences.</h1>
+        <p class="description">
+          Learn a few everyday words, then see how they fit together.
+        </p>
+      </header>
+
+      <section class="path" aria-labelledby="path-title" hidden>
+        <h2 id="path-title" tabindex="-1">Your learning path</h2>
+        <ol class="levels">
+          <li>
+            <button class="level level-button" id="open-vocabulary" type="button" aria-label="Level 1: Everyday words">
+              <span class="level-number" aria-hidden="true">01</span>
+              <span>
+                <span class="level-label">Level 1</span>
+                <span class="level-title">Everyday words</span>
+                <span class="level-description">Start with words you can use right away.</span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button class="level level-button level--locked" id="level-two" type="button" disabled>
+              <span class="level-number" aria-hidden="true">02</span>
+              <span>
+                <span class="level-label">Level 2</span>
+                <span class="level-title">Build a sentence</span>
+                <span class="level-description" id="level-two-description">Pass the Level 1 review to unlock this lesson.</span>
+              </span>
+              <span class="level-status" id="level-two-status">Locked</span>
+            </button>
+          </li>
+        </ol>
+        <button class="level level-button topic-entry" id="open-topics" type="button">
+          <span class="level-number" aria-hidden="true">🌐</span>
+          <span class="level-title">Practice by topic</span>
+        </button>
+        <button class="level level-button topic-entry" id="open-grammar" type="button">
+          <span class="level-title">Grammar guide</span>
+        </button>
+      </section>
+
+      <section class="level vocabulary" id="topic-practice" aria-labelledby="topics-title" hidden>
+        <button class="vocabulary-button lesson-back" id="back-from-topics" type="button">Back to learning path</button>
+        <h2 id="topics-title" tabindex="-1">Practice by topic</h2>
+        <div class="topic-options" id="topic-options" role="group" aria-label="Choose a topic"></div>
+        <div id="topic-material" hidden>
+          <h3 id="topic-title" tabindex="-1"></h3>
+          <p id="topic-locked" hidden>Unlocks in a later lesson</p>
+          <div class="topic-groups">
+            <section aria-labelledby="topic-words-title">
+              <h4 id="topic-words-title">Words</h4>
+              <ul id="topic-words"></ul>
+              <button class="vocabulary-button" id="practice-topic-words" type="button" hidden>Practice words</button>
+            </section>
+            <section aria-labelledby="topic-sentences-title">
+              <h4 id="topic-sentences-title">Sentences</h4>
+              <ul id="topic-sentences"></ul>
+              <button class="vocabulary-button" id="practice-topic-sentences" type="button" hidden>Practice sentences</button>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="level vocabulary" id="vocabulary" aria-labelledby="vocabulary-title" hidden>
+        <header class="word-lesson-header">
+          <button class="vocabulary-button lesson-back" id="back-to-path" type="button">Back to learning path</button>
+          <div class="word-lesson-heading">
+            <span class="word-lesson-icon" aria-hidden="true">🌐</span>
+            <h2 id="vocabulary-title">Everyday words</h2>
+          </div>
+        </header>
+        <div id="vocabulary-question">
+          <p id="review-progress" hidden></p>
+          <div class="word-lesson-columns">
+            <div class="word-lesson-prompt">
+              <p id="vocabulary-word" lang="es" tabindex="-1"></p>
+              <button class="vocabulary-button" id="reveal-meaning" type="button" aria-controls="vocabulary-meaning" aria-expanded="false">Reveal meaning</button>
+              <div aria-live="polite"><p id="vocabulary-meaning" hidden></p></div>
+            </div>
+            <div class="word-lesson-answers">
+              <div id="answer-choices" role="group" aria-label="Choose the English meaning">
+                <button class="vocabulary-button" type="button"></button>
+                <button class="vocabulary-button" type="button"></button>
+                <button class="vocabulary-button" type="button"></button>
+              </div>
+              <div class="word-lesson-feedback" aria-live="polite" aria-atomic="true">
+                <p id="answer-feedback"></p>
+                <div id="vocabulary-example" hidden>
+                  <p id="example-sentence" lang="es"></p>
+                  <p id="example-meaning"></p>
+                </div>
+              </div>
+              <div class="vocabulary-actions word-lesson-actions">
+                <button class="vocabulary-button" id="start-review" type="button" hidden>Start review</button>
+                <button class="vocabulary-button" id="next-card" type="button">Next card</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="review-result" hidden>
+          <h3 id="review-score" tabindex="-1"></h3>
+          <p id="review-outcome"></p>
+          <div class="vocabulary-actions">
+            <button class="vocabulary-button" id="retry-review" type="button">Try a fresh review</button>
+          </div>
+        </div>
+      </section>
+      <section class="level vocabulary" id="sentence-lesson" aria-labelledby="sentence-title" hidden>
+        <button class="vocabulary-button lesson-back" id="back-from-sentences" type="button">Back to learning path</button>
+        <h2 id="sentence-title">Build a sentence</h2>
+        <button class="vocabulary-button lesson-back" id="open-sentence-tutorial" type="button" hidden>Describing things tutorial</button>
+        <p id="sentence-progress"></p>
+        <h3 id="sentence-prompt" tabindex="-1"></h3>
+        <fieldset class="vocabulary-choices">
+          <legend>Your sentence</legend>
+          <div class="sentence-tiles sentence-selection" id="selected-tiles" lang="es"></div>
+        </fieldset>
+        <fieldset class="vocabulary-choices">
+          <legend>Word tiles</legend>
+          <div class="sentence-tiles" id="available-tiles" lang="es"></div>
+        </fieldset>
+        <p id="sentence-feedback" role="status" tabindex="-1"></p>
+        <details class="grammar-rule" id="sentence-grammar" hidden>
+          <summary>Show grammar</summary>
+          <div id="sentence-rule"></div>
+        </details>
+        <div class="vocabulary-actions">
+          <button class="vocabulary-button" id="check-sentence" type="button">Check sentence</button>
+          <button class="vocabulary-button" id="next-sentence" type="button" hidden>Next sentence</button>
+          <button class="vocabulary-button" id="replay-sentence-round" type="button" hidden>Replay round</button>
+          <button class="vocabulary-button" id="next-sentence-round" type="button" hidden>Next round</button>
+        </div>
+      </section>
+      <section class="level vocabulary" id="grammar-guide" aria-labelledby="grammar-title" hidden>
+        <button class="vocabulary-button lesson-back" id="back-from-grammar" type="button">Back to learning path</button>
+        <h2 id="grammar-title" tabindex="-1">Grammar guide</h2>
+        <button class="vocabulary-button" id="replay-tutorial" type="button">Start Describing things tutorial</button>
+        <p id="tutorial-locked" hidden>Unlock Level 2 to start the tutorial.</p>
+        <div id="grammar-rules"></div>
+      </section>
+      <section class="level vocabulary" id="grammar-tutorial" aria-labelledby="tutorial-title" hidden>
+        <button class="vocabulary-button lesson-back" id="back-from-tutorial" type="button"></button>
+        <h2 id="tutorial-title">Describing things</h2>
+        <p id="tutorial-progress"></p>
+        <h3 id="tutorial-prompt" tabindex="-1"></h3>
+        <div class="grammar-comparisons" id="tutorial-comparison" hidden></div>
+        <div id="tutorial-builder" hidden>
+          <fieldset class="vocabulary-choices">
+            <legend>Your sentence</legend>
+            <div class="sentence-tiles sentence-selection" id="tutorial-selected" lang="es"></div>
+          </fieldset>
+          <fieldset class="vocabulary-choices">
+            <legend>Word tiles</legend>
+            <div class="sentence-tiles" id="tutorial-tiles" lang="es"></div>
+          </fieldset>
+        </div>
+        <p id="tutorial-feedback" role="status" tabindex="-1"></p>
+        <div class="vocabulary-actions">
+          <button class="vocabulary-button" id="check-tutorial" type="button" hidden>Check answer</button>
+          <button class="vocabulary-button" id="next-tutorial" type="button" hidden>Continue</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
