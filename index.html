@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#FFFCFA">
+    <meta name="theme-color" content="#FFFFFF">
     <title>Word of Mouth | Learning path</title>
-    <script type="module" crossorigin src="./assets/index-joDsGclR.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BjyqZm8a.css">
+    <script type="module" crossorigin src="./assets/index-U56yKdiP.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dm5P6ghu.css">
   </head>
   <body>
     <main class="app">
@@ -111,6 +111,7 @@
             <h2>Spanish</h2>
             <button type="button" id="sidebar-learning-path">Your learning path</button>
             <button type="button" data-course-target="open-vocabulary">Level 1 · Everyday words</button>
+            <button type="button" id="start-review">Start review</button>
             <button type="button" id="sidebar-level-two" data-course-target="level-two" disabled>Level 2 · Build a sentence <small id="sidebar-level-two-status">Locked</small></button>
             <button type="button" data-course-target="open-topics">Practice by topic</button>
             <button type="button" data-course-target="open-grammar">Grammar guide</button>
@@ -157,7 +158,7 @@
               </div>
             </section>
 
-            <section class="level vocabulary" id="topic-practice" aria-labelledby="topics-title" hidden>
+            <section class="vocabulary lesson-page" id="topic-practice" aria-labelledby="topics-title" hidden>
               <button class="vocabulary-button lesson-back" id="back-from-topics" type="button">← Learning path</button>
               <h2 id="topics-title" tabindex="-1">Practice by topic</h2>
               <div class="topic-options" id="topic-options" role="group" aria-label="Choose a topic"></div>
@@ -179,7 +180,7 @@
               </div>
             </section>
 
-            <section class="level vocabulary" id="vocabulary" aria-labelledby="vocabulary-title" hidden>
+            <section class="vocabulary lesson-page study-page" id="vocabulary" aria-labelledby="vocabulary-title" hidden>
               <header class="word-lesson-header">
                 <button class="vocabulary-button lesson-back" id="back-to-path" type="button">← Learning path</button>
                 <div class="word-lesson-heading">
@@ -188,7 +189,8 @@
                 </div>
               </header>
               <div id="vocabulary-question">
-                <p id="review-progress" hidden></p>
+                <p id="review-progress" aria-live="polite" hidden></p>
+                <progress class="lesson-progress" id="review-progress-bar" aria-label="Vocabulary activity progress" value="0" max="1"></progress>
                 <div class="word-lesson-columns">
                   <div class="word-lesson-prompt">
                     <p id="vocabulary-word" lang="es" tabindex="-1"></p>
@@ -209,12 +211,19 @@
                       </div>
                     </div>
                     <div class="vocabulary-actions word-lesson-actions">
-                      <button class="vocabulary-button" id="start-review" type="button" hidden>Start review</button>
                       <button class="vocabulary-button" id="next-card" type="button">Next card</button>
                     </div>
                   </div>
                 </div>
               </div>
+              <section id="practice-summary" aria-labelledby="practice-summary-title" hidden>
+                <h3 id="practice-summary-title" tabindex="-1"></h3>
+                <p id="practice-summary-progress"></p>
+                <div class="vocabulary-actions">
+                  <button class="vocabulary-button" id="practice-again" type="button">Practice again</button>
+                  <button class="vocabulary-button" id="practice-summary-back" type="button">Back to topic</button>
+                </div>
+              </section>
               <div id="review-result" hidden>
                 <h3 id="review-score" tabindex="-1"></h3>
                 <p id="review-outcome"></p>
@@ -225,11 +234,12 @@
                 </div>
               </div>
             </section>
-            <section class="level vocabulary" id="sentence-lesson" aria-labelledby="sentence-title" hidden>
+            <section class="vocabulary lesson-page study-page" id="sentence-lesson" aria-labelledby="sentence-title" hidden>
               <button class="vocabulary-button lesson-back" id="back-from-sentences" type="button">← Learning path</button>
               <h2 id="sentence-title">Build a sentence</h2>
               <button class="vocabulary-button lesson-back" id="open-sentence-tutorial" type="button" hidden>Describing things tutorial</button>
               <p id="sentence-progress"></p>
+              <progress class="lesson-progress" id="sentence-progress-bar" aria-label="Sentence round progress" value="0" max="1"></progress>
               <h3 id="sentence-prompt" tabindex="-1"></h3>
               <fieldset class="vocabulary-choices">
                 <legend>Your sentence</legend>
@@ -251,7 +261,7 @@
                 <button class="vocabulary-button" id="next-sentence-round" type="button" hidden>Next round</button>
               </div>
             </section>
-            <section class="level vocabulary" id="grammar-guide" aria-labelledby="grammar-title" hidden>
+            <section class="vocabulary lesson-page" id="grammar-guide" aria-labelledby="grammar-title" hidden>
               <button class="vocabulary-button lesson-back" id="back-from-grammar" type="button">← Learning path</button>
               <h2 id="grammar-title" tabindex="-1">Grammar guide</h2>
               <button class="vocabulary-button" id="replay-tutorial" type="button">Start Describing things tutorial</button>
@@ -259,7 +269,7 @@
               <p id="tutorial-locked" hidden>Unlock Level 2 to start the grammar lessons.</p>
               <div id="grammar-rules"></div>
             </section>
-            <section class="level vocabulary" id="best-friend-lesson" aria-labelledby="best-friend-title" hidden>
+            <section class="vocabulary lesson-page study-page" id="best-friend-lesson" aria-labelledby="best-friend-title" hidden>
               <button class="vocabulary-button lesson-back" id="back-from-best-friend" type="button">Back to grammar</button>
               <h2 id="best-friend-title">My best friend</h2>
               <h3 id="best-friend-prompt" tabindex="-1"></h3>
@@ -270,10 +280,11 @@
                 <button class="vocabulary-button" id="next-best-friend" type="button">Continue</button>
               </div>
             </section>
-            <section class="level vocabulary" id="grammar-tutorial" aria-labelledby="tutorial-title" hidden>
+            <section class="vocabulary lesson-page study-page" id="grammar-tutorial" aria-labelledby="tutorial-title" hidden>
               <button class="vocabulary-button lesson-back" id="back-from-tutorial" type="button"></button>
               <h2 id="tutorial-title">Describing things</h2>
               <p id="tutorial-progress"></p>
+              <progress class="lesson-progress" id="tutorial-progress-bar" aria-label="Tutorial progress" value="0" max="1"></progress>
               <h3 id="tutorial-prompt" tabindex="-1"></h3>
               <div class="grammar-comparisons" id="tutorial-comparison" hidden></div>
               <div id="tutorial-builder" hidden>
