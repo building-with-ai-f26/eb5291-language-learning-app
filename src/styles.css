@@ -3,13 +3,12 @@
   font-family: "Inter", "Avenir Next", system-ui, sans-serif;
   color: var(--ink);
   background: var(--page);
-  --page: #FFFCFA;
+  --page: #FFFFFF;
   --surface: #FFFFFF;
-  --ink: #242222;
+  --ink: #222222;
   --muted: #625D5B;
-  --divider: #DED9D6;
+  --divider: #E0E6E4;
   --accent: #29CCB4;
-  --accent-deep: #106B69;
   --mint: #E5F7F5;
   --success: #27532D;
   --success-surface: #E8F5E9;
@@ -17,8 +16,17 @@
   --error: #8B3426;
   --error-surface: #FFF0EB;
   --error-border: #C98777;
-  --panel-shadow: 0 1px 2px #2422220a, 0 12px 32px #24222208;
-  --focus-ring: var(--accent-deep);
+  --focus-ring: var(--ink);
+  --page-title: clamp(1.75rem, 4vw, 2.25rem);
+  --card-title: 1.125rem;
+  --heading-weight: 650;
+  --button-size: 0.9375rem;
+  --button-weight: 600;
+  --study-word: clamp(2.75rem, 8vw, 4.25rem);
+  --study-phrase: clamp(1.5rem, 4vw, 2.5rem);
+  --study-width: 40rem;
+  --lesson-width: 52rem;
+  --controls-radius: 0.55rem;
 }
 
 * {
@@ -28,6 +36,7 @@
 body {
   margin: 0;
   min-height: 100vh;
+  line-height: 1.5;
   background: var(--page);
 }
 
@@ -39,10 +48,14 @@ body {
 
 h1 {
   margin: 0;
-  font-size: clamp(2.75rem, 7vw, 5.25rem);
-  font-weight: 650;
-  line-height: 1;
-  letter-spacing: -0.035em;
+  font-size: var(--page-title);
+  font-weight: var(--heading-weight);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.welcome h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
 }
 
 .description {
@@ -70,7 +83,6 @@ h1 {
   border-radius: 1.25rem;
   padding: 1.25rem;
   background: var(--surface);
-  box-shadow: var(--panel-shadow);
 }
 
 .level--locked {
@@ -93,8 +105,8 @@ h1 {
 .level-title {
   display: block;
   margin: 0.15rem 0 0.35rem;
-  font-size: 1.125rem;
-  font-weight: 700;
+  font-size: var(--card-title);
+  font-weight: var(--heading-weight);
 }
 
 .level p,
@@ -123,7 +135,7 @@ h1 {
 
 .level-button:enabled:hover,
 .vocabulary-button:enabled:not([aria-disabled="true"]):hover {
-  border-color: var(--accent-deep);
+  border-color: var(--ink);
 }
 
 button:focus-visible {
@@ -163,8 +175,7 @@ button:focus-visible {
   padding: clamp(1.25rem, 5vw, 3rem);
   border: 1px solid var(--divider);
   border-radius: 1.5rem;
-  background: var(--mint);
-  box-shadow: var(--panel-shadow);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--mint) 60%, var(--surface)), var(--surface) 75%);
 }
 
 .welcome-example p {
@@ -174,7 +185,7 @@ button:focus-visible {
 
 .welcome-example p:last-child,
 .welcome-example dd {
-  color: var(--muted);
+  color: var(--ink);
 }
 
 .welcome-example .grammar-chunks {
@@ -192,8 +203,8 @@ button:focus-visible {
 
 .welcome-example p[lang="es"] {
   margin-bottom: 0.6rem;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 650;
+  font-size: var(--study-phrase);
+  font-weight: var(--heading-weight);
   letter-spacing: -0.025em;
 }
 
@@ -281,26 +292,28 @@ button:focus-visible {
 
 .learning-home h1 {
   margin-block: clamp(2rem, 6vw, 4rem) 1.5rem;
-  font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .vocabulary h2 {
   margin: 0 0 0.75rem;
-  font-size: 1.125rem;
+  font-size: var(--page-title);
+  font-weight: var(--heading-weight);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
 #vocabulary-word {
   display: grid;
   place-items: center;
   margin: 0;
-  min-height: 13rem;
+  min-height: clamp(7.5rem, 16vw, 10rem);
   padding: 1.25rem;
   border: 1px solid var(--divider);
   border-radius: 0.75rem;
   background: var(--surface);
   color: var(--ink);
-  font-size: clamp(2.75rem, 8vw, 4.25rem);
-  font-weight: 650;
+  font-size: var(--study-word);
+  font-weight: var(--heading-weight);
   line-height: 1.1;
   letter-spacing: -0.025em;
   text-align: center;
@@ -357,13 +370,41 @@ button:focus-visible {
 
 .word-lesson-columns {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.5rem, 5vw, 3.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
 }
 
-#review-progress {
-  margin-bottom: 1rem;
+.lesson-page {
+  width: 100%;
+  max-width: var(--lesson-width);
 }
+
+.study-page {
+  max-width: var(--study-width);
+}
+
+:is(#review-progress, #sentence-progress, #tutorial-progress) {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.lesson-progress {
+  display: block;
+  width: 100%;
+  height: 0.375rem;
+  margin: 0 0 1.25rem;
+  appearance: none;
+  overflow: hidden;
+  border: 0;
+  border-radius: 1rem;
+  background: var(--divider);
+  accent-color: var(--accent);
+}
+
+.lesson-progress::-webkit-progress-bar { background: var(--divider); }
+.lesson-progress::-webkit-progress-value { background: var(--accent); }
+.lesson-progress::-moz-progress-bar { background: var(--accent); }
 
 #reveal-meaning,
 .lesson-back {
@@ -382,7 +423,8 @@ button:focus-visible {
 
 #answer-choices {
   display: grid;
-  gap: 0.75rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.6rem;
 }
 
 #answer-choices button {
@@ -392,6 +434,11 @@ button:focus-visible {
   border-radius: 0.65rem;
   background: var(--surface);
   text-align: left;
+}
+
+#answer-choices button:not([data-result]):not([aria-disabled]):hover {
+  border-color: var(--accent);
+  background: var(--mint);
 }
 
 #answer-choices button[data-result="correct"] {
@@ -428,15 +475,14 @@ button:focus-visible {
   font-weight: 700;
 }
 
-#review-result {
-  max-width: 34rem;
+:is(#review-result, #practice-summary) {
   padding: clamp(1.25rem, 4vw, 2rem);
   border: 1px solid var(--divider);
   border-radius: 0.75rem;
   background: var(--surface);
 }
 
-#review-score {
+:is(#review-score, #practice-summary-title) {
   margin-top: 0;
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 600;
@@ -449,16 +495,6 @@ button:focus-visible {
 
 .word-lesson-actions {
   justify-content: flex-end;
-}
-
-@media (max-width: 42rem) {
-  .word-lesson-columns {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  #vocabulary-word {
-    min-height: 9rem;
-  }
 }
 
 .vocabulary-choices {
@@ -490,30 +526,22 @@ button:focus-visible {
 .vocabulary-button {
   min-height: 2.75rem;
   border: 1px solid var(--divider);
-  border-radius: 0.75rem;
+  border-radius: var(--controls-radius);
   padding: 0.55rem 0.9rem;
   background: var(--surface);
-  font-weight: 600;
+  font-size: var(--button-size);
+  font-weight: var(--button-weight);
 }
 
-#sentence-lesson {
-  padding: clamp(1.25rem, 4vw, 2rem);
-}
-
-#sentence-lesson h2 {
-  font-size: clamp(1.65rem, 5vw, 2.75rem);
-  letter-spacing: -0.025em;
-}
-
-#sentence-prompt {
+:is(#sentence-prompt, #tutorial-prompt) {
   margin: 0.75rem 0 1.25rem;
   padding: 1rem 1.25rem;
   border: 1px solid var(--divider);
   border-radius: 1.25rem;
-  background: var(--mint);
-  font-size: clamp(1.5rem, 5vw, 2.25rem);
-  line-height: 1.2;
-  letter-spacing: -0.04em;
+  background: var(--surface);
+  font-size: var(--card-title);
+  font-weight: var(--heading-weight);
+  line-height: 1.4;
 }
 
 .sentence-tiles {
@@ -523,6 +551,15 @@ button:focus-visible {
   gap: 0.5rem;
   min-height: 2.5rem;
   margin-top: 0.35rem;
+}
+
+.sentence-tiles .vocabulary-button {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.sentence-selection .vocabulary-button {
+  border-color: var(--accent);
+  background: var(--mint);
 }
 
 .sentence-selection {
@@ -566,6 +603,12 @@ button:focus-visible {
 
 .grammar-comparison h4 {
   margin: 0 0 0.75rem;
+  font-size: var(--card-title);
+  font-weight: var(--heading-weight);
+}
+
+.grammar-chunk strong[lang="es"] {
+  font-size: 1.2rem;
 }
 
 :is(.word-lesson-prompt, .grammar-comparison):has(button[aria-label^="Hear it:"], button[aria-label^="Play audio:"]) {
@@ -579,7 +622,7 @@ button:focus-visible {
   display: grid;
   place-items: center;
   background: var(--mint);
-  color: var(--accent-deep);
+  color: var(--ink);
 }
 
 .vocabulary-button[aria-label^="Hear it:"] {
@@ -614,7 +657,7 @@ button:focus-visible {
 
 .vocabulary-button[aria-label^="Play audio:"] {
   padding-inline: 0.5rem;
-  font-size: 0.8rem;
+  font-size: var(--button-size);
 }
 
 .grammar-comparison:has(button[aria-label^="Hear it:"]) h4 {
@@ -643,11 +686,6 @@ button:focus-visible {
 .grammar-chunk[data-role="article"] { background: #dcebf9; }
 .grammar-chunk[data-role="noun"] { background: #def0df; }
 .grammar-chunk[data-role="adjective"] { background: #f2e4f8; }
-
-#topics-title {
-  font-size: clamp(1.65rem, 5vw, 2.75rem);
-  letter-spacing: -0.025em;
-}
 
 .topic-options {
   display: flex;
@@ -717,8 +755,8 @@ button:focus-visible {
 }
 
 .best-friend-line[lang="es"] {
-  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
-  font-weight: 700;
+  font-size: var(--study-phrase);
+  font-weight: var(--heading-weight);
 }
 
 .grammar-comparison .best-friend-line + .best-friend-line {
@@ -782,28 +820,33 @@ button:focus-visible {
 
 .vocabulary-button:is(
   .welcome-action, .onboarding-action,
-  #next-card, #start-level-two, #start-level-two[hidden] + #retry-review,
-  #check-sentence, #next-sentence, #next-sentence-round, #replay-sentence-round,
+  #next-card, #start-level-two, #start-level-two[hidden] + #retry-review, #practice-again,
+  #check-sentence, #next-sentence, #next-sentence-round, #replay-sentence-round:has(+ #next-sentence-round[hidden]),
   #next-tutorial, #check-tutorial, #replay-tutorial,
-  #open-best-friend, #next-best-friend, #replay-best-friend,
-  #practice-topic-words, #practice-topic-sentences
-) {
+  #next-best-friend, #replay-best-friend, #practice-topic-words,
+  .topic-groups:not(:has(#practice-topic-words:not([hidden]))) #practice-topic-sentences
+):enabled {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--ink);
-  font-weight: 700;
   overflow-wrap: anywhere;
 }
 
 .vocabulary-button:is(
   .welcome-action, .onboarding-action,
-  #next-card, #start-level-two, #start-level-two[hidden] + #retry-review,
-  #check-sentence, #next-sentence, #next-sentence-round, #replay-sentence-round,
+  #next-card, #start-level-two, #start-level-two[hidden] + #retry-review, #practice-again,
+  #check-sentence, #next-sentence, #next-sentence-round, #replay-sentence-round:has(+ #next-sentence-round[hidden]),
   #next-tutorial, #check-tutorial, #replay-tutorial,
-  #open-best-friend, #next-best-friend, #replay-best-friend,
-  #practice-topic-words, #practice-topic-sentences
+  #next-best-friend, #replay-best-friend, #practice-topic-words,
+  .topic-groups:not(:has(#practice-topic-words:not([hidden]))) #practice-topic-sentences
 ):enabled:not([aria-disabled="true"]):hover {
-  border-color: var(--accent-deep);
+  border-color: var(--ink);
+}
+
+.vocabulary-button:disabled {
+  background: var(--surface);
+  border-color: var(--divider);
+  color: var(--muted);
 }
 
 .app-brand > span,
@@ -822,21 +865,12 @@ button:focus-visible {
 .app a,
 .app .lesson-back,
 #back-to-learning,
-.learning-header [data-leave-profile],
-#course-progress,
-#review-progress,
-#sentence-progress,
-#tutorial-progress {
-  color: var(--accent-deep);
+.learning-header [data-leave-profile] {
+  color: var(--ink);
 }
 
 .app :is(progress, meter) {
   accent-color: var(--accent);
-}
-
-:is(#course-progress, #review-progress, #sentence-progress, #tutorial-progress):not(:empty) {
-  text-decoration: underline var(--accent) 0.12em;
-  text-underline-offset: 0.25em;
 }
 
 .course-header {
@@ -855,16 +889,12 @@ button:focus-visible {
 
 .course-title {
   margin: clamp(1.5rem, 4vw, 2.5rem) 0 1.25rem;
-  font-size: clamp(2rem, 4vw, 2.25rem);
-  font-weight: 550;
-  letter-spacing: -0.025em;
 }
 
 .path h2 {
   margin: 0 0 1rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: normal;
+  font-size: var(--card-title);
+  font-weight: var(--heading-weight);
 }
 
 .course-rows {
@@ -874,7 +904,11 @@ button:focus-visible {
   background: var(--surface);
 }
 
-.course-rows li + li,
+.levels.course-rows {
+  gap: 0.75rem;
+  border: 0;
+}
+
 .course-resource + .course-resource {
   border-top: 1px solid var(--divider);
 }
@@ -892,6 +926,11 @@ button:focus-visible {
   box-shadow: none;
 }
 
+.course-row {
+  border: 1px solid var(--divider);
+  border-radius: 0.75rem;
+}
+
 .course-row > span:first-child {
   display: grid;
   gap: 0.2rem;
@@ -899,7 +938,6 @@ button:focus-visible {
 
 .course-row .level-title {
   margin: 0;
-  font-weight: 600;
 }
 
 .course-row .level-label,
@@ -919,14 +957,19 @@ button:focus-visible {
   padding: 0.35rem 0.65rem;
   border: 1px solid var(--divider);
   border-radius: 0.45rem;
-  color: var(--accent-deep);
-  font-weight: 600;
+  color: var(--ink);
+  font-size: var(--button-size);
+  font-weight: var(--button-weight);
 }
 
 .course-action[data-next] {
   border-color: var(--accent);
   background: var(--accent);
   color: var(--ink);
+}
+
+.course-row:enabled:hover .course-action[data-next] {
+  border-color: var(--ink);
 }
 
 .course-row:enabled:hover,
@@ -1014,7 +1057,8 @@ button:focus-visible {
 .course-columns:has(#topic-practice:not([hidden])) [data-course-target="open-topics"],
 .course-columns:has(:is(#grammar-guide, #best-friend-lesson, #grammar-tutorial):not([hidden])) [data-course-target="open-grammar"] {
   background: var(--mint);
-  color: var(--accent-deep);
+  box-shadow: inset 3px 0 var(--accent);
+  color: var(--ink);
 }
 
 .site-sidebar a:focus-visible {
@@ -1029,7 +1073,7 @@ button:focus-visible {
 
 .site-sidebar #start-review {
   padding-inline-start: 1.2rem;
-  color: var(--accent-deep);
+  color: var(--ink);
 }
 
 .site-sidebar small:not([hidden]) {
@@ -1041,7 +1085,7 @@ button:focus-visible {
   margin-top: 0;
 }
 
-.course-feed :is(#back-to-path, #back-from-sentences, #back-from-topics, #back-from-grammar) {
+.course-feed .lesson-back {
   min-height: 2rem;
   padding: 0.25rem 0;
   border: 0;
@@ -1050,21 +1094,9 @@ button:focus-visible {
   font-weight: 500;
 }
 
-.course-feed :is(#back-to-path, #back-from-sentences, #back-from-topics, #back-from-grammar):hover {
+.course-feed .lesson-back:hover {
   text-decoration: underline;
   text-underline-offset: 0.2em;
-}
-
-.course-feed > section:has(> :is(#back-from-sentences, #back-from-topics, #back-from-grammar)) {
-  position: relative;
-  margin-top: 2.5rem;
-}
-
-.course-feed > section > :is(#back-from-sentences, #back-from-topics, #back-from-grammar) {
-  position: absolute;
-  inset-block-start: -2.5rem;
-  inset-inline-start: 0;
-  margin: 0;
 }
 
 .course-feed .word-lesson-header {
@@ -1103,18 +1135,16 @@ button:focus-visible {
 .saved-courses li:has(#continue-course) {
   position: relative;
   border-radius: 0.7rem 0.7rem 0 0;
-  background: linear-gradient(110deg, var(--surface) 35%, var(--mint));
 }
 
 .saved-courses li:has(#continue-course):is(:hover, :focus-within) {
-  background: linear-gradient(110deg, var(--surface), var(--mint) 65%);
+  background: var(--mint);
 }
 
 #continue-course.vocabulary-button {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: linear-gradient(105deg, color-mix(in srgb, var(--accent) 78%, var(--mint)), var(--accent));
 }
 
 #continue-course::before {
@@ -1135,8 +1165,8 @@ button:focus-visible {
 .saved-courses h2,
 #try-languages h2 {
   margin: 0;
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: var(--card-title);
+  font-weight: var(--heading-weight);
 }
 
 .saved-courses p,

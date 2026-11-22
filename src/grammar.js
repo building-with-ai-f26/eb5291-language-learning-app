@@ -14,6 +14,7 @@ const replay = document.querySelector('#replay-tutorial');
 const tutorial = document.querySelector('#grammar-tutorial');
 const back = document.querySelector('#back-from-tutorial');
 const progress = document.querySelector('#tutorial-progress');
+const progressBar = document.querySelector('#tutorial-progress-bar');
 const prompt = document.querySelector('#tutorial-prompt');
 const comparison = document.querySelector('#tutorial-comparison');
 const buildArea = document.querySelector('#tutorial-builder');
@@ -68,6 +69,8 @@ function showStep(index) {
   const step = describingThings.steps[index];
   const comparing = step.type === 'compare';
   progress.textContent = `Step ${index + 1} of ${describingThings.steps.length}`;
+  progressBar.max = describingThings.steps.length;
+  progressBar.value = index + 1;
   comparison.hidden = !comparing;
   buildArea.hidden = comparing;
   check.hidden = comparing;

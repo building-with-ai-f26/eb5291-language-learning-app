@@ -18,6 +18,7 @@ const meaning = document.querySelector('#vocabulary-meaning');
 const revealButton = document.querySelector('#reveal-meaning');
 const nextButton = document.querySelector('#next-card');
 const reviewProgress = document.querySelector('#review-progress');
+const progressBar = document.querySelector('#review-progress-bar');
 const practiceSummary = document.querySelector('#practice-summary');
 const practiceSummaryTitle = document.querySelector('#practice-summary-title');
 const practiceSummaryProgress = document.querySelector('#practice-summary-progress');
@@ -105,6 +106,8 @@ function showCard(index) {
   reviewProgress.textContent = reviewing
     ? `Question ${cardIndex + 1} of ${reviewLength}`
     : practiceProgress(index + Number(practice.answered));
+  progressBar.max = words.length;
+  progressBar.value = reviewing ? index : index + Number(practice.answered);
   word.textContent = entry.spanish;
   if (import.meta.env.DEV) {
     hearIt?.remove();
@@ -245,9 +248,11 @@ answerButtons.forEach((button) => {
     showAnswer(entry, button, correct);
     if (reviewing) {
       score += Number(correct);
+      progressBar.value = cardIndex + 1;
       nextButton.hidden = false;
     } else if (correct) {
       practice.answered = true;
+      progressBar.value = cardIndex + 1;
       reviewProgress.textContent = practiceProgress(cardIndex + 1);
     }
   });

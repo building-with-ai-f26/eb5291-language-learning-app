@@ -6,6 +6,7 @@ const path = document.querySelector('.path');
 const openButton = document.querySelector('#level-two');
 const lesson = document.querySelector('#sentence-lesson');
 const progress = document.querySelector('#sentence-progress');
+const progressBar = document.querySelector('#sentence-progress-bar');
 const prompt = document.querySelector('#sentence-prompt');
 const availableTiles = document.querySelector('#available-tiles');
 const selectedTiles = document.querySelector('#selected-tiles');
@@ -30,6 +31,8 @@ function showExercise(index) {
   const exercises = rounds[roundIndex];
   const exercise = exercises[index];
   progress.textContent = `Sentence ${index + 1} of ${exercises.length}`;
+  progressBar.max = exercises.length;
+  progressBar.value = index + 1;
   prompt.textContent = exercise.prompt;
   feedback.textContent = '';
   checkButton.hidden = false;
