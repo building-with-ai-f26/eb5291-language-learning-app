@@ -99,8 +99,8 @@
       </section>
 
       <section class="course-site" id="spanish-course" aria-label="Spanish course" hidden>
-        <header class="course-header">
-          <button class="vocabulary-button" id="back-to-learning" type="button">← My learning</button>
+        <header class="learning-header course-header">
+          <p class="app-brand"><span aria-hidden="true">🌐</span> Word of Mouth</p>
           <div class="path-profile">
             <span id="path-username"></span>
             <button class="vocabulary-button" id="leave-profile" type="button" data-leave-profile>Leave profile</button>
@@ -109,6 +109,7 @@
 
         <div class="course-columns">
           <nav class="site-sidebar" aria-label="Spanish course">
+            <button id="back-to-learning" type="button">← My learning</button>
             <h2>Spanish</h2>
             <button type="button" id="sidebar-learning-path">Your learning path</button>
             <button type="button" data-course-target="open-vocabulary">Level 1 · Everyday words</button>
@@ -159,7 +160,7 @@
             </section>
 
             <section class="level vocabulary" id="topic-practice" aria-labelledby="topics-title" hidden>
-              <button class="vocabulary-button lesson-back" id="back-from-topics" type="button">Back to learning path</button>
+              <button class="vocabulary-button lesson-back" id="back-from-topics" type="button">← Learning path</button>
               <h2 id="topics-title" tabindex="-1">Practice by topic</h2>
               <div class="topic-options" id="topic-options" role="group" aria-label="Choose a topic"></div>
               <div id="topic-material" hidden>
@@ -182,7 +183,7 @@
 
             <section class="level vocabulary" id="vocabulary" aria-labelledby="vocabulary-title" hidden>
               <header class="word-lesson-header">
-                <button class="vocabulary-button lesson-back" id="back-to-path" type="button">Back to learning path</button>
+                <button class="vocabulary-button lesson-back" id="back-to-path" type="button">← Learning path</button>
                 <div class="word-lesson-heading">
                   <span class="word-lesson-icon" aria-hidden="true">🌐</span>
                   <h2 id="vocabulary-title">Everyday words</h2>
@@ -227,7 +228,7 @@
               </div>
             </section>
             <section class="level vocabulary" id="sentence-lesson" aria-labelledby="sentence-title" hidden>
-              <button class="vocabulary-button lesson-back" id="back-from-sentences" type="button">Back to learning path</button>
+              <button class="vocabulary-button lesson-back" id="back-from-sentences" type="button">← Learning path</button>
               <h2 id="sentence-title">Build a sentence</h2>
               <button class="vocabulary-button lesson-back" id="open-sentence-tutorial" type="button" hidden>Describing things tutorial</button>
               <p id="sentence-progress"></p>
@@ -253,7 +254,7 @@
               </div>
             </section>
             <section class="level vocabulary" id="grammar-guide" aria-labelledby="grammar-title" hidden>
-              <button class="vocabulary-button lesson-back" id="back-from-grammar" type="button">Back to learning path</button>
+              <button class="vocabulary-button lesson-back" id="back-from-grammar" type="button">← Learning path</button>
               <h2 id="grammar-title" tabindex="-1">Grammar guide</h2>
               <button class="vocabulary-button" id="replay-tutorial" type="button">Start Describing things tutorial</button>
               <button class="vocabulary-button" id="open-best-friend" type="button" hidden>My best friend</button>

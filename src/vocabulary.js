@@ -156,7 +156,7 @@ export function openWords(entries, alternatives = everydayWords, onBack = null) 
   practiceWords = entries;
   choicePool = alternatives;
   returnToTopic = onBack;
-  backButton.textContent = onBack ? 'Back to topic' : 'Back to learning path';
+  backButton.textContent = onBack ? '← Topic' : '← Learning path';
   path.hidden = true;
   card.hidden = false;
   reviewWords = null;

@@ -979,6 +979,43 @@ button:focus-visible {
   margin-top: 0;
 }
 
+.course-feed :is(#back-to-path, #back-from-sentences, #back-from-topics, #back-from-grammar) {
+  min-height: 2rem;
+  padding: 0.25rem 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.course-feed :is(#back-to-path, #back-from-sentences, #back-from-topics, #back-from-grammar):hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.course-feed > section:has(> :is(#back-from-sentences, #back-from-topics, #back-from-grammar)) {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.course-feed > section > :is(#back-from-sentences, #back-from-topics, #back-from-grammar) {
+  position: absolute;
+  inset-block-start: -2.5rem;
+  inset-inline-start: 0;
+  margin: 0;
+}
+
+.course-feed .word-lesson-header {
+  display: grid;
+  justify-content: start;
+  gap: 0.5rem;
+}
+
+.course-feed .word-lesson-header #back-to-path {
+  order: 0;
+  justify-self: start;
+}
+
 .saved-courses,
 .learning-progress {
   border: 1px solid var(--divider);
@@ -999,6 +1036,33 @@ button:focus-visible {
   flex-wrap: wrap;
   gap: 0.75rem;
   padding: 1rem;
+}
+
+.saved-courses li:has(#continue-course) {
+  position: relative;
+  border-radius: 0.7rem 0.7rem 0 0;
+  background: linear-gradient(110deg, var(--surface) 35%, var(--mint));
+}
+
+.saved-courses li:has(#continue-course):is(:hover, :focus-within) {
+  background: linear-gradient(110deg, var(--surface), var(--mint) 65%);
+}
+
+#continue-course.vocabulary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: linear-gradient(105deg, color-mix(in srgb, var(--accent) 78%, var(--mint)), var(--accent));
+}
+
+#continue-course::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+#continue-course::after {
+  content: "→" / "";
 }
 
 .saved-courses li + li,

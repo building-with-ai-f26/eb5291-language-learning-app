@@ -57,7 +57,7 @@ export function openSentences(entries = null, onBack = null) {
   roundIndex = 0;
   returnToTopic = onBack;
   tutorialButton.hidden = Boolean(onBack);
-  backButton.textContent = onBack ? 'Back to topic' : 'Back to learning path';
+  backButton.textContent = onBack ? '← Topic' : '← Learning path';
   path.hidden = true;
   lesson.hidden = false;
   showExercise(0);
