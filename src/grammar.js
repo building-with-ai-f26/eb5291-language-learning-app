@@ -2,6 +2,7 @@ import './best-friend.js';
 import { describingThings, grammarExercises, grammarRoles, grammarRules } from './grammar-content.js';
 import { createTileBuilder, matchesAnswer } from './tiles.js';
 import { unlockedLevel } from './vocabulary.js';
+import { createHearIt } from './lesson-audio.js';
 
 const path = document.querySelector('.path');
 const sentenceLesson = document.querySelector('#sentence-lesson');
@@ -56,6 +57,9 @@ function comparisonCard(example) {
     chunks.append(chunk);
   }
   card.append(textElement('h4', example.english), chunks, textElement('p', example.explanation));
+  if (import.meta.env.DEV && example.id === 'pink-house') {
+    card.append(createHearIt(example.id, 'una casa rosa'));
+  }
   return card;
 }
 

@@ -1,4 +1,4 @@
-import { unlockedLevel } from './vocabulary.js';
+import { openWordReview, unlockedLevel } from './vocabulary.js';
 
 const profileKey = 'spanish-study.profile';
 const activityKey = 'spanish-study.profile-active';
@@ -102,8 +102,12 @@ for (const button of leaveButtons) {
   });
 }
 
-function showLearningPath() {
+function hideCourseViews() {
   for (const view of courseViews) view.hidden = true;
+}
+
+function showLearningPath() {
+  hideCourseViews();
   path.hidden = false;
   pathTitle.focus();
 }
@@ -117,11 +121,16 @@ for (const button of document.querySelectorAll('[data-open-spanish]')) {
 }
 
 document.querySelector('#sidebar-learning-path').addEventListener('click', showLearningPath);
+document.querySelector('#start-review').addEventListener('click', () => {
+  hideCourseViews();
+  openWordReview();
+});
+
 for (const button of document.querySelectorAll('[data-course-target]')) {
   button.addEventListener('click', () => {
     const target = document.getElementById(button.dataset.courseTarget);
     if (target.disabled) return;
-    for (const view of courseViews) view.hidden = true;
+    hideCourseViews();
     target.click();
   });
 }

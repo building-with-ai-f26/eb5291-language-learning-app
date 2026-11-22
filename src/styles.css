@@ -568,6 +568,63 @@ button:focus-visible {
   margin: 0 0 0.75rem;
 }
 
+:is(.word-lesson-prompt, .grammar-comparison):has(button[aria-label^="Hear it:"], button[aria-label^="Play audio:"]) {
+  position: relative;
+}
+
+.vocabulary-button:is([aria-label^="Hear it:"], [aria-label^="Play audio:"]) {
+  position: absolute;
+  inset-block-start: 0.55rem;
+  inset-inline-end: 0.55rem;
+  display: grid;
+  place-items: center;
+  background: var(--mint);
+  color: var(--accent-deep);
+}
+
+.vocabulary-button[aria-label^="Hear it:"] {
+  inline-size: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0;
+}
+
+.vocabulary-button[aria-label^="Hear it:"]::before,
+.vocabulary-button[aria-label^="Hear it:"]::after {
+  position: absolute;
+  content: "";
+}
+
+.vocabulary-button[aria-label^="Hear it:"]::before {
+  inline-size: 0.65rem;
+  block-size: 0.8rem;
+  inset-inline-start: 0.8rem;
+  background: currentColor;
+  clip-path: polygon(0 34%, 34% 34%, 100% 0, 100% 100%, 34% 66%, 0 66%);
+}
+
+.vocabulary-button[aria-label^="Hear it:"]::after {
+  inline-size: 0.35rem;
+  block-size: 0.6rem;
+  inset-inline-start: 1.5rem;
+  border-inline-end: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+.vocabulary-button[aria-label^="Play audio:"] {
+  padding-inline: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.grammar-comparison:has(button[aria-label^="Hear it:"]) h4 {
+  padding-inline-end: 2.5rem;
+}
+
+.grammar-comparison:has(button[aria-label^="Play audio:"]) h4 {
+  padding-inline-end: 4.5rem;
+}
+
 .grammar-chunks {
   display: flex;
   flex-wrap: wrap;
@@ -725,7 +782,7 @@ button:focus-visible {
 
 .vocabulary-button:is(
   .welcome-action, .onboarding-action,
-  #next-card, #start-review, #start-level-two, #start-level-two[hidden] + #retry-review,
+  #next-card, #start-level-two, #start-level-two[hidden] + #retry-review,
   #check-sentence, #next-sentence, #next-sentence-round, #replay-sentence-round,
   #next-tutorial, #check-tutorial, #replay-tutorial,
   #open-best-friend, #next-best-friend, #replay-best-friend,
@@ -740,7 +797,7 @@ button:focus-visible {
 
 .vocabulary-button:is(
   .welcome-action, .onboarding-action,
-  #next-card, #start-review, #start-level-two, #start-level-two[hidden] + #retry-review,
+  #next-card, #start-level-two, #start-level-two[hidden] + #retry-review,
   #check-sentence, #next-sentence, #next-sentence-round, #replay-sentence-round,
   #next-tutorial, #check-tutorial, #replay-tutorial,
   #open-best-friend, #next-best-friend, #replay-best-friend,
@@ -888,7 +945,7 @@ button:focus-visible {
 
 .learning-columns,
 .course-columns {
-  --sidebar-width: clamp(11rem, 20vw, 16rem);
+  --sidebar-width: clamp(11.5rem, 21vw, 17rem);
   display: grid;
   align-items: stretch;
   gap: clamp(1.25rem, 3vw, 2.5rem);
@@ -968,6 +1025,11 @@ button:focus-visible {
 .site-sidebar button:disabled,
 .site-sidebar small {
   color: var(--muted);
+}
+
+.site-sidebar #start-review {
+  padding-inline-start: 1.2rem;
+  color: var(--accent-deep);
 }
 
 .site-sidebar small:not([hidden]) {
@@ -1132,7 +1194,7 @@ button:focus-visible {
   }
 
   .learning-columns {
-    grid-template-columns: var(--sidebar-width) minmax(0, 1fr) clamp(12rem, 19vw, 17rem);
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr) clamp(12.5rem, 20vw, 18rem);
   }
 
   :is(.site-sidebar, .learning-progress) {

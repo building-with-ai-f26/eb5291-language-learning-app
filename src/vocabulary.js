@@ -1,6 +1,7 @@
-import { everydayWords } from './vocabulary-content.js';
+import { everydayWords, vocabulary } from './vocabulary-content.js';
 import { openSentences } from './sentences.js';
 import { shuffle } from './shuffle.js';
+import { createHearIt } from './lesson-audio.js';
 
 const path = document.querySelector('.path');
 const openButton = document.querySelector('#open-vocabulary');
@@ -16,8 +17,12 @@ const exampleMeaning = document.querySelector('#example-meaning');
 const meaning = document.querySelector('#vocabulary-meaning');
 const revealButton = document.querySelector('#reveal-meaning');
 const nextButton = document.querySelector('#next-card');
-const startReviewButton = document.querySelector('#start-review');
 const reviewProgress = document.querySelector('#review-progress');
+const practiceSummary = document.querySelector('#practice-summary');
+const practiceSummaryTitle = document.querySelector('#practice-summary-title');
+const practiceSummaryProgress = document.querySelector('#practice-summary-progress');
+const practiceAgainButton = document.querySelector('#practice-again');
+const practiceSummaryBack = document.querySelector('#practice-summary-back');
 const reviewResult = document.querySelector('#review-result');
 const reviewScore = document.querySelector('#review-score');
 const reviewOutcome = document.querySelector('#review-outcome');
@@ -37,14 +42,14 @@ const sidebarLevelTwoStatus = document.querySelector('#sidebar-level-two-status'
 const reviewLength = 5;
 const passingScore = 4;
 const unlockKey = 'spanish-study.level-two-unlocked';
+const practiceSessions = new Map();
 
 let cardIndex = 0;
 let answerRecorded = false;
 let reviewWords = null;
 let score = 0;
-let practiceWords = everydayWords;
-let choicePool = everydayWords;
-let returnToTopic = null;
+let practice;
+let hearIt;
 
 export function unlockedLevel() {
   return levelTwo.disabled ? 1 : 2;
@@ -75,7 +80,7 @@ function similarity(entry, candidate) {
   return Number(sharesContext) + Number(sharesPartOfSpeech);
 }
 
-function answerChoices(entry) {
+function answerChoices(entry, choicePool) {
   const alternatives = shuffle(choicePool.filter((candidate) => candidate.english !== entry.english))
     .sort((first, second) => similarity(entry, second) - similarity(entry, first));
   const distinctMeanings = new Set(alternatives.map((candidate) => candidate.english));
@@ -87,18 +92,28 @@ function showCard(index) {
   answerRecorded = false;
 
   const reviewing = reviewWords !== null;
-  const words = reviewWords ?? practiceWords;
+  const words = reviewWords ?? practice.entries;
   const entry = words[cardIndex];
-  const choices = answerChoices(entry);
+  const useFirstLessonChoices = reviewing || (!practice.onBack && cardIndex < everydayWords.length);
+  const choices = answerChoices(entry, useFirstLessonChoices ? everydayWords : practice.alternatives);
   const lastCard = cardIndex === words.length - 1;
 
   question.hidden = false;
+  practiceSummary.hidden = true;
   reviewResult.hidden = true;
-  reviewProgress.hidden = !reviewing && !returnToTopic;
+  reviewProgress.hidden = false;
   reviewProgress.textContent = reviewing
     ? `Question ${cardIndex + 1} of ${reviewLength}`
-    : `Word ${cardIndex + 1} of ${words.length}`;
+    : practiceProgress(index + Number(practice.answered));
   word.textContent = entry.spanish;
+  if (import.meta.env.DEV) {
+    hearIt?.remove();
+    hearIt = undefined;
+    if (!reviewing) {
+      hearIt = createHearIt(entry.id, entry.spanish);
+      revealButton.before(hearIt);
+    }
+  }
   meaning.textContent = entry.english;
   meaning.hidden = true;
   revealButton.setAttribute('aria-expanded', 'false');
@@ -108,16 +123,34 @@ function showCard(index) {
   exampleSentence.textContent = entry.example.spanish;
   exampleMeaning.textContent = entry.example.english;
   revealButton.hidden = reviewing;
-  nextButton.hidden = reviewing || lastCard;
-  nextButton.textContent = reviewing ? 'Continue' : 'Next card';
-  startReviewButton.hidden = reviewing || Boolean(returnToTopic);
+  nextButton.hidden = reviewing;
+  nextButton.textContent = reviewing ? 'Continue' : lastCard ? 'Finish practice'
+    : (index + 1) % practice.setSize === 0 ? 'Next set' : 'Next card';
 
   answerButtons.forEach((button, choiceIndex) => {
     button.textContent = choices[choiceIndex];
     button.removeAttribute('aria-disabled');
     button.removeAttribute('data-result');
   });
+  if (!reviewing && practice.answered) {
+    showAnswer(entry, [...answerButtons].find((button) => button.textContent === entry.english), true);
+  }
   word.focus();
+}
+
+function practiceProgress(count) {
+  return `${count} of ${practice.entries.length} words practiced`;
+}
+
+function finishPractice() {
+  question.hidden = true;
+  practiceSummary.hidden = false;
+  practiceSummaryTitle.textContent = practice.onBack
+    ? 'You’ve reached the end of this topic’s unlocked words.'
+    : 'You’ve practiced all your unlocked words.';
+  practiceSummaryProgress.textContent = practiceProgress(practice.index);
+  practiceSummaryBack.textContent = practice.onBack ? 'Back to topic' : 'Back to learning path';
+  practiceSummaryTitle.focus();
 }
 
 function startReview() {
@@ -152,64 +185,103 @@ function finishReview() {
   reviewScore.focus();
 }
 
-export function openWords(entries, alternatives = everydayWords, onBack = null) {
-  practiceWords = entries;
-  choicePool = alternatives;
-  returnToTopic = onBack;
+function openWordView(onBack, viewTitle) {
   backButton.textContent = onBack ? '← Topic' : '← Learning path';
   path.hidden = true;
   card.hidden = false;
-  reviewWords = null;
-  title.textContent = onBack ? 'Practice words' : 'Everyday words';
-  showCard(0);
+  title.textContent = viewTitle;
 }
 
-openButton.addEventListener('click', () => openWords(everydayWords));
+export function openWords(entries, { key, alternatives, setSize, onBack = null }) {
+  practice = practiceSessions.get(key) ?? { entries: [], index: 0, answered: false };
+  const existingIds = new Set(practice.entries.map(({ id }) => id));
+  practice.entries.push(...entries.filter(({ id }) => !existingIds.has(id)));
+  Object.assign(practice, { alternatives, setSize, onBack });
+  practiceSessions.set(key, practice);
+  reviewWords = null;
+  openWordView(onBack, onBack ? 'Practice words' : 'Everyday words');
+  if (practice.index === practice.entries.length) {
+    reviewResult.hidden = true;
+    finishPractice();
+  } else {
+    showCard(practice.index);
+  }
+}
+
+function openEverydayWords() {
+  const firstIds = new Set(everydayWords.map(({ id }) => id));
+  const unlocked = vocabulary.filter(({ level }) => level <= unlockedLevel());
+  const entries = [...everydayWords, ...unlocked.filter(({ id }) => !firstIds.has(id))];
+  openWords(entries, { key: 'everyday', alternatives: unlocked, setSize: everydayWords.length });
+}
+
+openButton.addEventListener('click', openEverydayWords);
+
+function showAnswer(entry, button, correct) {
+  const result = correct ? 'correct' : 'incorrect';
+  answerButtons.forEach((choice) => choice.removeAttribute('data-result'));
+  button.setAttribute('data-result', result);
+  feedback.setAttribute('data-result', result);
+  if (!reviewWords && !correct) {
+    feedback.textContent = 'Try again.';
+    return;
+  }
+
+  answerRecorded = true;
+  const translation = `${entry.spanish} means ${entry.english}.`;
+  feedback.textContent = correct ? `Correct! ${translation}` : `Incorrect. ${translation}`;
+  example.hidden = !correct;
+  answerButtons.forEach((choice) => choice.setAttribute('aria-disabled', 'true'));
+}
 
 answerButtons.forEach((button) => {
   button.addEventListener('click', () => {
     if (answerRecorded) return;
 
     const reviewing = reviewWords !== null;
-    const words = reviewWords ?? practiceWords;
+    const words = reviewWords ?? practice.entries;
     const entry = words[cardIndex];
     const correct = button.textContent === entry.english;
-    const result = correct ? 'correct' : 'incorrect';
-    answerButtons.forEach((choice) => choice.removeAttribute('data-result'));
-    button.setAttribute('data-result', result);
-    feedback.setAttribute('data-result', result);
-    if (!reviewing && !correct) {
-      feedback.textContent = 'Try again.';
-      return;
-    }
-
-    answerRecorded = true;
-    const translation = `${entry.spanish} means ${entry.english}.`;
-    feedback.textContent = correct ? `Correct! ${translation}` : `Incorrect. ${translation}`;
-    if (returnToTopic && cardIndex === words.length - 1) feedback.textContent += ' Practice complete.';
-    example.hidden = !correct;
-    answerButtons.forEach((choice) => choice.setAttribute('aria-disabled', 'true'));
+    showAnswer(entry, button, correct);
     if (reviewing) {
       score += Number(correct);
       nextButton.hidden = false;
+    } else if (correct) {
+      practice.answered = true;
+      reviewProgress.textContent = practiceProgress(cardIndex + 1);
     }
   });
 });
 
-startReviewButton.addEventListener('click', startReview);
+export function openWordReview() {
+  openWordView(null, 'Level 1 review');
+  startReview();
+}
+
 retryReviewButton.addEventListener('click', startReview);
-practiceReviewWordsButton.addEventListener('click', () => openWords(everydayWords));
+practiceReviewWordsButton.addEventListener('click', openEverydayWords);
 startLevelTwoButton.addEventListener('click', () => {
   if (unlockedLevel() !== 2) return;
   card.hidden = true;
   openSentences();
 });
 nextButton.addEventListener('click', () => {
-  if (reviewWords && cardIndex === reviewWords.length - 1) {
-    finishReview();
-  } else {
-    showCard(cardIndex + 1);
+  if (reviewWords) {
+    if (cardIndex === reviewWords.length - 1) finishReview();
+    else showCard(cardIndex + 1);
+    return;
   }
+
+  practice.index = cardIndex + 1;
+  practice.answered = false;
+  if (practice.index === practice.entries.length) finishPractice();
+  else showCard(practice.index);
+});
+
+practiceAgainButton.addEventListener('click', () => {
+  practice.index = 0;
+  practice.answered = false;
+  showCard(0);
 });
 
 revealButton.addEventListener('click', () => {
@@ -217,12 +289,15 @@ revealButton.addEventListener('click', () => {
   revealButton.setAttribute('aria-expanded', 'true');
 });
 
-backButton.addEventListener('click', () => {
+function leaveWordView() {
   card.hidden = true;
-  if (returnToTopic) {
-    returnToTopic();
+  if (!reviewWords && practice.onBack) {
+    practice.onBack();
     return;
   }
   path.hidden = false;
   openButton.focus();
-});
+}
+
+backButton.addEventListener('click', leaveWordView);
+practiceSummaryBack.addEventListener('click', leaveWordView);

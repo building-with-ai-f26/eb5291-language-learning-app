@@ -113,6 +113,7 @@
             <h2>Spanish</h2>
             <button type="button" id="sidebar-learning-path">Your learning path</button>
             <button type="button" data-course-target="open-vocabulary">Level 1 · Everyday words</button>
+            <button type="button" id="start-review">Start review</button>
             <button type="button" id="sidebar-level-two" data-course-target="level-two" disabled>Level 2 · Build a sentence <small id="sidebar-level-two-status">Locked</small></button>
             <button type="button" data-course-target="open-topics">Practice by topic</button>
             <button type="button" data-course-target="open-grammar">Grammar guide</button>
@@ -190,7 +191,7 @@
                 </div>
               </header>
               <div id="vocabulary-question">
-                <p id="review-progress" hidden></p>
+                <p id="review-progress" aria-live="polite" hidden></p>
                 <div class="word-lesson-columns">
                   <div class="word-lesson-prompt">
                     <p id="vocabulary-word" lang="es" tabindex="-1"></p>
@@ -211,12 +212,19 @@
                       </div>
                     </div>
                     <div class="vocabulary-actions word-lesson-actions">
-                      <button class="vocabulary-button" id="start-review" type="button" hidden>Start review</button>
                       <button class="vocabulary-button" id="next-card" type="button">Next card</button>
                     </div>
                   </div>
                 </div>
               </div>
+              <section id="practice-summary" aria-labelledby="practice-summary-title" hidden>
+                <h3 id="practice-summary-title" tabindex="-1"></h3>
+                <p id="practice-summary-progress"></p>
+                <div class="vocabulary-actions">
+                  <button class="vocabulary-button" id="practice-again" type="button">Practice again</button>
+                  <button class="vocabulary-button" id="practice-summary-back" type="button">Back to topic</button>
+                </div>
+              </section>
               <div id="review-result" hidden>
                 <h3 id="review-score" tabindex="-1"></h3>
                 <p id="review-outcome"></p>

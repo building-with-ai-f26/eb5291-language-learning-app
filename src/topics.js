@@ -95,7 +95,12 @@ function returnToTopic() {
 practiceWords.addEventListener('click', () => {
   const choicePool = new Set(words.map(({ english }) => english)).size >= 3 ? words : unlockedWords;
   view.hidden = true;
-  openWords(shuffle(words).slice(0, roundLength), choicePool, returnToTopic);
+  openWords(shuffle(words), {
+    key: topicId,
+    alternatives: choicePool,
+    setSize: roundLength,
+    onBack: returnToTopic,
+  });
 });
 
 practiceSentences.addEventListener('click', () => {
