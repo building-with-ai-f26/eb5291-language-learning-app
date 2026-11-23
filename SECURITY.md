@@ -3,7 +3,7 @@
 ## Scope
 
 - Course lane: Beginner. App type: AI app with no database.
-- Reviewed source: `45bc97f`. Reviewed GitHub Pages artifact: `f267e44`. The separate Product Page and PostHog changes are local drafts.
+- Pronunciation security review: source `45bc97f`, GitHub Pages artifact `f267e44`. Learner analytics release: source `032c563`, GitHub Pages artifact `6f7f12d`. The separate Product Page remains a local draft.
 - GitHub Pages serves a static learner app. The learner profile and Level 2 unlock are stored in the learner’s browser. A Cloudflare Worker fetches pronunciation from OpenRouter. There are no cloud accounts, application database, or user file uploads.
 - Database access controls, database backups, and private storage buckets are not applicable. The Worker caches generated audio for fixed lesson text.
 
@@ -34,7 +34,7 @@
 - No new high-severity code finding was verified. This pass changed only this report.
 - A value with the format of a likely real OpenRouter key appeared in earlier tool output while the local example file was being inspected. This was separate from the confirmed Git history placeholder. Emma reported that she disabled the old key. The replacement is deployed with an Emma-reported $0 spending limit. The Worker/browser check verified fresh generation after rotation. The OpenRouter Activity row is pending dashboard confirmation.
 - Browser origin restrictions do not authenticate callers. Known lesson IDs, the two rate limits, cached responses, and the fixed free model bound the public route’s behavior. The provider check did not establish a monthly spend cap.
-- Pending Build 3 evidence includes a classmate completing the core workflow on a phone. Production PostHog verification, the filtered localhost event screenshot, and masked replay remain pending. The localhost dashboard observation does not verify production analytics.
+- Pending Build 3 evidence includes a classmate completing the core workflow on a phone, filtered PostHog screenshots, dashboard confirmation of live analytics, and a successful live masked replay.
 
 ## Live 429 test — completed
 
@@ -49,3 +49,10 @@
 - The compiled candidate was exercised in Chrome against a local collector and a separate audio origin serving a captured **agua** MP3. Declining consent produced zero collector requests, including after reload. After opt-in, the collector received only `$pageview` and `hear_it_clicked`, tagged `app=word_of_mouth` and `surface=learner_app`. The audio played to completion.
 - Replay stayed off until a separate opt-in on the active fictional **Build 2 Demo** profile. That name was entered manually. The app neither displayed it as an instruction nor prefilled it. Recorded payloads masked the fictional profile name, input, lesson text, and test attribute. Leaving the profile stopped the recording. No real learner profile was used.
 - The shared project’s read-only SDK configuration returned HTTP 200 and included replay configuration at review time. No settings were changed. After an approved deployment, dashboard ingestion and a masked replay from the actual Pages origin still need confirmation.
+
+## Learner analytics release — live verification
+
+- GitHub Pages reported `6f7f12d` built and served the corresponding bundle at the existing public URL. The build from source `032c563` contained the existing public PostHog configuration and the Worker URL. It contained no OpenRouter key and did not include the Product Page draft.
+- In an isolated Chrome session, declining analytics sent zero PostHog requests, including after reload. After opt-in, the browser sent a tagged `$pageview` with `app=word_of_mouth` and `surface=learner_app`. The event request returned HTTP 200. The POST following the speaker click returned HTTP 204. Its encoded body was not decoded in the live capture. The exact `hear_it_clicked` payload was verified with the local collector. PostHog dashboard ingestion remains to be checked.
+- On the public app, the speaker on **agua** returned HTTP 200 with `audio/mpeg` and played to completion in Chrome.
+- Replay controls stayed hidden before analytics consent and until the fictional profile name was entered manually. The separate opt-in was tested only with that fictional profile. Chrome observed HTTP 204 for the recorder script, the app reported that recording had not started, and no replay snapshot upload was observed. The public configuration advertised replay and a standalone read of the recorder asset returned HTTP 200, so the browser failure does not establish that a shared project setting needs changing. The local masking check passed. Live masking and replay ingestion remain unverified. The Worker and account settings were unchanged.
